@@ -1,7 +1,10 @@
-import threading, time, sys
+# -*- coding: utf-8 -*-
+from threading import Thread
+import time
+import sys
 
 
-class Spinner(threading.Thread):
+class Spinner(Thread):
     def __init__(self, max_play=0, min_play=1, time_step=0.5):
         super().__init__()
 
@@ -13,6 +16,8 @@ class Spinner(threading.Thread):
         self._min_play = min_play
         self._time_step = time_step
         self._count = 0
+
+        self.daemon = True
 
     def play_animation(self):
         idx = 0
