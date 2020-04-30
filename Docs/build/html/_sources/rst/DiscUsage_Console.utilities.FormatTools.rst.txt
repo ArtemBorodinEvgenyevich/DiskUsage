@@ -1,0 +1,7 @@
+DiscUsage\_Console.utilities.FormatTools module
+===============================================
+
+.. automodule:: DiscUsage_Console.utilities.FormatTools
+   :members:
+   :undoc-members:
+   :show-inheritance:

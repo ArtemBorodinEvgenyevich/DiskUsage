@@ -1,0 +1,7 @@
+DiscUsage\_Console.DUCore.Spinner module
+========================================
+
+.. automodule:: DiscUsage_Console.DUCore.Spinner
+   :members:
+   :undoc-members:
+   :show-inheritance:

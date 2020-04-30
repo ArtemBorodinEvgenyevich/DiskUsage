@@ -4,6 +4,12 @@ from os import path
 
 
 def convert_size(size_bytes: int):
+    """
+    Utility for human-read size conversion.
+
+    :param size_bytes:
+    :return:
+    """
     if size_bytes == 0:
         return "0B"
 
@@ -17,12 +23,19 @@ def convert_size(size_bytes: int):
 
 # TODO
 def split_filename(filename: str):
+    """
+    Utility for splitting filename from extension.
+
+    :param filename:
+    :return:
+    """
     if len(filename.split(".")) > 2:
         return filename.split('.')[0], '.'.join(filename.split('.')[-2:])
     return path.splitext(filename)
 
 
 class ASCIIStyle:
+    """Structure provided special ASCII characters for console output editing."""
     RESET = "\033[0m"
     CLEAR = "\033[2J"
 
@@ -43,4 +56,12 @@ class ASCIIStyle:
 
     @staticmethod
     def custom_style(mode: int, colour: int, background: int):
+        """
+        Create own unique ASCII symbol style.
+
+        :param mode:
+        :param colour:
+        :param background:
+        :return:
+        """
         return f"\033[{mode};{colour};{background}m"

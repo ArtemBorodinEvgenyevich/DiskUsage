@@ -5,7 +5,14 @@ import sys
 
 
 class Spinner(Thread):
+    """Waiting indicator."""
     def __init__(self, max_play=0, min_play=1, time_step=0.5):
+        """
+
+        :param max_play:
+        :param min_play:
+        :param time_step:
+        """
         super().__init__()
 
         self.animation = ["|o_o|", "|o_-|", "|o_o|", "|-_o|", "|o_o|", "|-_-|", "|^_^|", "|-_-|",
@@ -20,6 +27,10 @@ class Spinner(Thread):
         self.daemon = True
 
     def play_animation(self):
+        """
+
+        :return:
+        """
         idx = 0
         print()
         while self._state:
@@ -30,8 +41,16 @@ class Spinner(Thread):
             time.sleep(self._time_step)
 
     def run(self):
+        """
+
+        :return:
+        """
         self.play_animation()
 
     def stop(self):
+        """
+
+        :return:
+        """
         self._state = False
         self.join()
