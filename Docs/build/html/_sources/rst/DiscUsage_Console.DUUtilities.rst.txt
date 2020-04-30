@@ -1,0 +1,18 @@
+DiscUsage\_Console.DUUtilities package
+======================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   DiscUsage_Console.DUUtilities.DUFormatTools
+
+Module contents
+---------------
+
+.. automodule:: DiscUsage_Console.DUUtilities
+   :members:
+   :undoc-members:
+   :show-inheritance:

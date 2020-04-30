@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>DiscUsage_Console.DUCore.DataStruct module &mdash; DiskUsage 0.5.0 documentation</title>
+  <title>DiscUsage_Console.DUCore.DUFileCrawler module &mdash; DiskUsage 0.5.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DiscUsage_Console.DUCore.FileCrawler module" href="DiscUsage_Console.DUCore.FileCrawler.html" />
-    <link rel="prev" title="DiscUsage_Console.DUCore package" href="DiscUsage_Console.DUCore.html" /> 
+    <link rel="next" title="DiscUsage_Console.DUCore.DUSpinner module" href="DiscUsage_Console.DUCore.DUSpinner.html" />
+    <link rel="prev" title="DiscUsage_Console.DUCore.DUDataStruct module" href="DiscUsage_Console.DUCore.DUDataStruct.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,7 +90,7 @@
 <li class="toctree-l4"><a class="reference internal" href="DiscUsage_Console.DUCore.html#module-DiscUsage_Console.DUCore">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="DiscUsage_Console.utilities.html">DiscUsage_Console.utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DiscUsage_Console.DUUtilities.html">DiscUsage_Console.DUUtilities package</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="DiscUsage_Console.html#submodules">Submodules</a></li>
@@ -146,13 +146,13 @@
         
           <li><a href="DiscUsage_Console.DUCore.html">DiscUsage_Console.DUCore package</a> &raquo;</li>
         
-      <li>DiscUsage_Console.DUCore.DataStruct module</li>
+      <li>DiscUsage_Console.DUCore.DUFileCrawler module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/rst/DiscUsage_Console.DUCore.DataStruct.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/rst/DiscUsage_Console.DUCore.DUFileCrawler.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -165,36 +165,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-DiscUsage_Console.DUCore.DataStruct">
-<span id="discusage-console-ducore-datastruct-module"></span><h1>DiscUsage_Console.DUCore.DataStruct module<a class="headerlink" href="#module-DiscUsage_Console.DUCore.DataStruct" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-DiscUsage_Console.DUCore.DUFileCrawler">
+<span id="discusage-console-ducore-dufilecrawler-module"></span><h1>DiscUsage_Console.DUCore.DUFileCrawler module<a class="headerlink" href="#module-DiscUsage_Console.DUCore.DUFileCrawler" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="DiscUsage_Console.DUCore.DataStruct.File">
-<em class="property">class </em><code class="sig-prename descclassname">DiscUsage_Console.DUCore.DataStruct.</code><code class="sig-name descname">File</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DataStruct.File" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler">
+<em class="property">class </em><code class="sig-prename descclassname">DiscUsage_Console.DUCore.DUFileCrawler.</code><code class="sig-name descname">FileCrawler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>File structure.</p>
+<p>File searching.</p>
 <dl class="py method">
-<dt id="DiscUsage_Console.DUCore.DataStruct.File.path">
-<em class="property">property </em><code class="sig-name descname">path</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DataStruct.File.path" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-</dl>
-</dd></dl>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
-<dt id="DiscUsage_Console.DUCore.DataStruct.File.size">
-<em class="property">property </em><code class="sig-name descname">size</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DataStruct.File.size" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="DiscUsage_Console.DUCore.DataStruct.File.extension">
-<em class="property">property </em><code class="sig-name descname">extension</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DataStruct.File.extension" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler.get_files">
+<code class="sig-name descname">get_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler.get_files" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p></p>
@@ -214,10 +199,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="DiscUsage_Console.DUCore.FileCrawler.html" class="btn btn-neutral float-right" title="DiscUsage_Console.DUCore.FileCrawler module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="DiscUsage_Console.DUCore.DUSpinner.html" class="btn btn-neutral float-right" title="DiscUsage_Console.DUCore.DUSpinner module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="DiscUsage_Console.DUCore.html" class="btn btn-neutral float-left" title="DiscUsage_Console.DUCore package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="DiscUsage_Console.DUCore.DUDataStruct.html" class="btn btn-neutral float-left" title="DiscUsage_Console.DUCore.DUDataStruct module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -3,7 +3,7 @@ import math
 from os import path
 
 
-def convert_size(size_bytes: int):
+def format_convert_size(size_bytes: int):
     """
     Utility for human-read size conversion.
 
@@ -22,7 +22,7 @@ def convert_size(size_bytes: int):
     return str(f"{size} {size_name[dimension]}")
 
 # TODO
-def split_filename(filename: str):
+def format_split_filename(filename: str):
     """
     Utility for splitting filename from extension.
 
@@ -34,7 +34,7 @@ def split_filename(filename: str):
     return path.splitext(filename)
 
 
-class ASCIIStyle:
+class FormatASCIIStyle:
     """Structure provided special ASCII characters for console output editing."""
     RESET = "\033[0m"
     CLEAR = "\033[2J"

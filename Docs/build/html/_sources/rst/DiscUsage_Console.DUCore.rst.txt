@@ -7,9 +7,9 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
-   DiscUsage_Console.DUCore.DataStruct
-   DiscUsage_Console.DUCore.FileCrawler
-   DiscUsage_Console.DUCore.Spinner
+   DiscUsage_Console.DUCore.DUDataStruct
+   DiscUsage_Console.DUCore.DUFileCrawler
+   DiscUsage_Console.DUCore.DUSpinner
 
 Module contents
 ---------------

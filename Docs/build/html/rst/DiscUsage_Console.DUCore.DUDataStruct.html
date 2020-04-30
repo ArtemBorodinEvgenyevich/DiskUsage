@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>DiscUsage_Console.DUCore.Spinner module &mdash; DiskUsage 0.5.0 documentation</title>
+  <title>DiscUsage_Console.DUCore.DUDataStruct module &mdash; DiskUsage 0.5.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DiscUsage_Console.utilities package" href="DiscUsage_Console.utilities.html" />
-    <link rel="prev" title="DiscUsage_Console.DUCore.FileCrawler module" href="DiscUsage_Console.DUCore.FileCrawler.html" /> 
+    <link rel="next" title="DiscUsage_Console.DUCore.DUFileCrawler module" href="DiscUsage_Console.DUCore.DUFileCrawler.html" />
+    <link rel="prev" title="DiscUsage_Console.DUCore package" href="DiscUsage_Console.DUCore.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,7 +90,7 @@
 <li class="toctree-l4"><a class="reference internal" href="DiscUsage_Console.DUCore.html#module-DiscUsage_Console.DUCore">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="DiscUsage_Console.utilities.html">DiscUsage_Console.utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DiscUsage_Console.DUUtilities.html">DiscUsage_Console.DUUtilities package</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="DiscUsage_Console.html#submodules">Submodules</a></li>
@@ -146,13 +146,13 @@
         
           <li><a href="DiscUsage_Console.DUCore.html">DiscUsage_Console.DUCore package</a> &raquo;</li>
         
-      <li>DiscUsage_Console.DUCore.Spinner module</li>
+      <li>DiscUsage_Console.DUCore.DUDataStruct module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/rst/DiscUsage_Console.DUCore.Spinner.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/rst/DiscUsage_Console.DUCore.DUDataStruct.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -165,16 +165,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-DiscUsage_Console.DUCore.Spinner">
-<span id="discusage-console-ducore-spinner-module"></span><h1>DiscUsage_Console.DUCore.Spinner module<a class="headerlink" href="#module-DiscUsage_Console.DUCore.Spinner" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-DiscUsage_Console.DUCore.DUDataStruct">
+<span id="discusage-console-ducore-dudatastruct-module"></span><h1>DiscUsage_Console.DUCore.DUDataStruct module<a class="headerlink" href="#module-DiscUsage_Console.DUCore.DUDataStruct" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="DiscUsage_Console.DUCore.Spinner.Spinner">
-<em class="property">class </em><code class="sig-prename descclassname">DiscUsage_Console.DUCore.Spinner.</code><code class="sig-name descname">Spinner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">max_play</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">min_play</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">0.5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.Spinner.Spinner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
-<p>Waiting indicator.</p>
+<dt id="DiscUsage_Console.DUCore.DUDataStruct.File">
+<em class="property">class </em><code class="sig-prename descclassname">DiscUsage_Console.DUCore.DUDataStruct.</code><code class="sig-name descname">File</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUDataStruct.File" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>File structure.</p>
 <dl class="py method">
-<dt id="DiscUsage_Console.DUCore.Spinner.Spinner.play_animation">
-<code class="sig-name descname">play_animation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.Spinner.Spinner.play_animation" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUDataStruct.File.path">
+<em class="property">property </em><code class="sig-name descname">path</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUDataStruct.File.path" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p></p>
@@ -183,8 +183,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="DiscUsage_Console.DUCore.Spinner.Spinner.run">
-<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.Spinner.Spinner.run" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUDataStruct.File.size">
+<em class="property">property </em><code class="sig-name descname">size</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUDataStruct.File.size" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p></p>
@@ -193,8 +193,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="DiscUsage_Console.DUCore.Spinner.Spinner.stop">
-<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.Spinner.Spinner.stop" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUDataStruct.File.extension">
+<em class="property">property </em><code class="sig-name descname">extension</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUDataStruct.File.extension" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p></p>
@@ -214,10 +214,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="DiscUsage_Console.utilities.html" class="btn btn-neutral float-right" title="DiscUsage_Console.utilities package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="DiscUsage_Console.DUCore.DUFileCrawler.html" class="btn btn-neutral float-right" title="DiscUsage_Console.DUCore.DUFileCrawler module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="DiscUsage_Console.DUCore.FileCrawler.html" class="btn btn-neutral float-left" title="DiscUsage_Console.DUCore.FileCrawler module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="DiscUsage_Console.DUCore.html" class="btn btn-neutral float-left" title="DiscUsage_Console.DUCore package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
