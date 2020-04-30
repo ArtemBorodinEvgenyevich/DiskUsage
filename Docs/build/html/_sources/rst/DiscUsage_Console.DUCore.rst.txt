@@ -1,0 +1,20 @@
+DiscUsage\_Console.DUCore package
+=================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   DiscUsage_Console.DUCore.DataStruct
+   DiscUsage_Console.DUCore.FileCrawler
+   DiscUsage_Console.DUCore.Spinner
+
+Module contents
+---------------
+
+.. automodule:: DiscUsage_Console.DUCore
+   :members:
+   :undoc-members:
+   :show-inheritance:

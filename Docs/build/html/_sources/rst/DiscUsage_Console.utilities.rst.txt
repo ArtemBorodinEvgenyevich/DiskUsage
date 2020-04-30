@@ -1,0 +1,18 @@
+DiscUsage\_Console.utilities package
+====================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   DiscUsage_Console.utilities.FormatTools
+
+Module contents
+---------------
+
+.. automodule:: DiscUsage_Console.utilities
+   :members:
+   :undoc-members:
+   :show-inheritance:

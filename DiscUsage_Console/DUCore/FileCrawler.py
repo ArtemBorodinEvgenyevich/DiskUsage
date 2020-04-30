@@ -2,13 +2,17 @@
 
 from os import path, walk, stat
 from threading import Thread
-from utilities.FormatTools import split_filename
-from DataStruct import File
+from DiscUsage_Console.utilities.FormatTools import split_filename
+from DiscUsage_Console.DUCore.DataStruct import File
 
 
 class FileCrawler:
-
+    """File searching."""
     def __init__(self, root):
+        """
+
+        :param root:
+        """
         super().__init__()
 
         self._root = root
@@ -17,6 +21,10 @@ class FileCrawler:
         self.get_files()
 
     def get_files(self):
+        """
+
+        :return:
+        """
         for root, dirs, files in walk(self._root):
             for filename in files:
                 file = File()

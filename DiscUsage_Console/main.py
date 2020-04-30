@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 from tabulate import tabulate
-from FileCrawler import FileCrawler
-from utilities.FormatTools import convert_size, ASCIIStyle
-from Spinner import Spinner
+from DiscUsage_Console.DUCore.Spinner import Spinner
+from DiscUsage_Console.DUCore.FileCrawler import FileCrawler
+from DiscUsage_Console.utilities.FormatTools import convert_size, ASCIIStyle
 import sys
 import os
-import queue
 
 
 def check_path(search_path: str):
+    """
+    Utility for checking paths' existence.
+
+    :param search_path:
+    :return:
+    """
     if not os.path.exists(search_path):
         raise FileNotFoundError
 
@@ -16,6 +21,11 @@ def check_path(search_path: str):
 
 
 def main():
+    """
+    Main cycle. Yeaah!!!
+
+    :return:
+    """
     path = os.path.abspath(os.path.curdir)
     args = sys.argv
 
@@ -48,7 +58,6 @@ def main():
         # Check for internal tabulate function errors.
         # IndexError raised in case using inappropriate data.
         try:
-            tables = 15
             headers = ["PATH", "SIZE", "EXTENSION"]
             output_tables = tabulate(tables, headers=headers, tablefmt="fancy_grid",
                                      colalign=("left", "center", "center"))
