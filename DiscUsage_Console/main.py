@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from tabulate import tabulate
-from DiscUsage_Console.DUCore.Spinner import Spinner
-from DiscUsage_Console.DUCore.FileCrawler import FileCrawler
-from DiscUsage_Console.utilities.FormatTools import convert_size, ASCIIStyle
+from DiscUsage_Console.DUCore.DUSpinner import Spinner
+from DiscUsage_Console.DUCore.DUFileCrawler import FileCrawler
+from DiscUsage_Console.DUUtilities.DUFormatTools import format_convert_size, FormatASCIIStyle
 import sys
 import os
 
@@ -20,12 +20,15 @@ def check_path(search_path: str):
     return search_path
 
 
-def main():
+def main() -> None:
     """
     Main cycle. Yeaah!!!
 
-    :return:
+    .. note::
+
+        Another junk info about module. Please rewrite me
     """
+
     path = os.path.abspath(os.path.curdir)
     args = sys.argv
 
@@ -34,9 +37,9 @@ def main():
             path = check_path(args[1])
         except FileNotFoundError:
             print("--------------------------------- ")
-            print(f"{ASCIIStyle.RED}Error! ")
+            print(f"{FormatASCIIStyle.RED}Error! ")
             print("Specified folder does not exist!")
-            print(f"Try once again.{ASCIIStyle.RESET}")
+            print(f"Try once again.{FormatASCIIStyle.RESET}")
             print("---------------------------------")
             sys.exit(2)
 
@@ -52,7 +55,7 @@ def main():
         waiting_ico.stop()
 
         for file in files:
-            table = [file.path, convert_size(file.size), file.extension]
+            table = [file.path, format_convert_size(file.size), file.extension]
             tables.append(table)
 
         # Check for internal tabulate function errors.
@@ -65,7 +68,7 @@ def main():
         except IndexError as table_error:
             print("\r--------------------------------- ")
             print("Whoops! Something went wrong...")
-            print(f"{ASCIIStyle.RED}{table_error}{ASCIIStyle.RESET}")
+            print(f"{FormatASCIIStyle.RED}{table_error}{FormatASCIIStyle.RESET}")
             print("---------------------------------")
             sys.exit(4)
 
@@ -73,7 +76,7 @@ def main():
         waiting_ico.stop()
         print("\r--------------------------------- ")
         print("Crawling has been stopped.")
-        print(f"{ASCIIStyle.YELLOW}Keyboard interruption.{ASCIIStyle.RESET}")
+        print(f"{FormatASCIIStyle.YELLOW}Keyboard interruption.{FormatASCIIStyle.RESET}")
         print("---------------------------------")
         sys.exit(130)
 

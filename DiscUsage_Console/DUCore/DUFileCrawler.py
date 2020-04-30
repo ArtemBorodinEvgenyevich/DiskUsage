@@ -2,8 +2,8 @@
 
 from os import path, walk, stat
 from threading import Thread
-from DiscUsage_Console.utilities.FormatTools import split_filename
-from DiscUsage_Console.DUCore.DataStruct import File
+from DiscUsage_Console.DUUtilities.DUFormatTools import format_split_filename
+from DiscUsage_Console.DUCore.DUDataStruct import File
 
 
 class FileCrawler:
@@ -30,7 +30,7 @@ class FileCrawler:
                 file = File()
                 file.path = path.join(root, filename)
                 file.size = stat(file.path).st_size
-                file.extension = split_filename(filename)[1]
+                file.extension = format_split_filename(filename)[1]
 
                 yield file
 

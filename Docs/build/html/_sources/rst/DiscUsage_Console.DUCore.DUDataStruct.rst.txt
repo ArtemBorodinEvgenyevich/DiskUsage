@@ -1,0 +1,7 @@
+DiscUsage\_Console.DUCore.DUDataStruct module
+=============================================
+
+.. automodule:: DiscUsage_Console.DUCore.DUDataStruct
+   :members:
+   :undoc-members:
+   :show-inheritance:
