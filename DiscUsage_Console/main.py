@@ -1,19 +1,16 @@
 # -*- coding: utf-8 -*-
+
 from tabulate import tabulate
-from DiscUsage_Console.DUCore.DUSpinner import Spinner
-from DiscUsage_Console.DUCore.DUFileCrawler import FileCrawler
-from DiscUsage_Console.DUUtilities.DUFormatTools import format_convert_size, FormatASCIIStyle
+from DUCore.DUSpinner import Spinner
+from DUCore.DUFileCrawler import FileCrawler
+from DUCore.DUArgParser import ArgParser
+from DUUtilities.DUFormatTools import format_convert_size, FormatASCIIStyle
+
 import sys
 import os
 
 
 def check_path(search_path: str):
-    """
-    Utility for checking paths' existence.
-
-    :param search_path:
-    :return:
-    """
     if not os.path.exists(search_path):
         raise FileNotFoundError
 
@@ -21,62 +18,48 @@ def check_path(search_path: str):
 
 
 def main() -> None:
-    """
-    Main cycle. Yeaah!!!
-
-    .. note::
-
-        Another junk info about module. Please rewrite me
-    """
-
-    path = os.path.abspath(os.path.curdir)
-    args = sys.argv
-
-    if len(args) > 1:
-        try:
-            path = check_path(args[1])
-        except FileNotFoundError:
-            print("--------------------------------- ")
-            print(f"{FormatASCIIStyle.RED}Error! ")
-            print("Specified folder does not exist!")
-            print(f"Try once again.{FormatASCIIStyle.RESET}")
-            print("---------------------------------")
-            sys.exit(2)
-
+    # Init argument parser, threads and tables
+    parser = ArgParser(description='DiskUsage [OPTIONS] <SEARCH_DIR> \n\t'
+                                   'Lists files contained in a specified directory.\n\t'
+                                   'Generates an ASCII table with file path and its size.\n')
+    args = parser.parse_args()
     tables = []
-
-    crawler = FileCrawler(root=path)
+    crawler = FileCrawler(args=args)
     waiting_ico = Spinner()
 
-    # Catching possible errors during program execution
+    # Catching possible errors during program execution.
     try:
         waiting_ico.start()
         files = [file for file in crawler.get_files()]
         waiting_ico.stop()
 
         for file in files:
+            # Check for pattern match if arguments enabled.
+            if args.extension is not None and file.extension != args.extension:
+                continue
             table = [file.path, format_convert_size(file.size), file.extension]
             tables.append(table)
 
-        # Check for internal tabulate function errors.
-        # IndexError raised in case using inappropriate data.
+        # Check for internal tabulate function error.
+        # IndexError raised in case no elements in tables or invalid data passed.
         try:
             headers = ["PATH", "SIZE", "EXTENSION"]
             output_tables = tabulate(tables, headers=headers, tablefmt="fancy_grid",
                                      colalign=("left", "center", "center"))
             print(output_tables)
-        except IndexError as table_error:
+        except (IndexError, AttributeError) as table_error:
             print("\r--------------------------------- ")
-            print("Whoops! Something went wrong...")
+            print("There are no such files.")
+            print("Please, try again.")
             print(f"{FormatASCIIStyle.RED}{table_error}{FormatASCIIStyle.RESET}")
             print("---------------------------------")
             sys.exit(4)
 
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, FileNotFoundError, FileExistsError) as runtime_error:
         waiting_ico.stop()
         print("\r--------------------------------- ")
         print("Crawling has been stopped.")
-        print(f"{FormatASCIIStyle.YELLOW}Keyboard interruption.{FormatASCIIStyle.RESET}")
+        print(f"{FormatASCIIStyle.YELLOW}{runtime_error}{FormatASCIIStyle.RESET}")
         print("---------------------------------")
         sys.exit(130)
 

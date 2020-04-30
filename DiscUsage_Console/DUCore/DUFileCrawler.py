@@ -1,42 +1,66 @@
 # -*- coding: utf-8 -*-
 
-from os import path, walk, stat
-from threading import Thread
-from DiscUsage_Console.DUUtilities.DUFormatTools import format_split_filename
-from DiscUsage_Console.DUCore.DUDataStruct import File
+from DUUtilities.DUFormatTools import FormatASCIIStyle, format_split_filename
+from collections import namedtuple
+
+import os
+import sys
+import argparse
+
+File = namedtuple("File", ["path", "size", "extension"])
 
 
 class FileCrawler:
     """File searching."""
-    def __init__(self, root):
-        """
 
-        :param root:
-        """
+    def __init__(self, args: argparse.Namespace):
         super().__init__()
 
-        self._root = root
+        self._args = args
+        self._root = self.root_validation(args.search_dir)
 
     def run(self) -> None:
         self.get_files()
 
     def get_files(self):
-        """
 
-        :return:
-        """
-        for root, dirs, files in walk(self._root):
+        for root, dirs, files in os.walk(self._root):
             for filename in files:
-                file = File()
-                file.path = path.join(root, filename)
-                file.size = stat(file.path).st_size
-                file.extension = format_split_filename(filename)[1]
+                # file = File()
+
+                if self._args.absolute:
+                    file_path = os.path.join(root, filename)
+                else:
+                    file_path = os.path.join(root, filename).rsplit(self._root)[1]
+                file_size = os.stat(os.path.join(root, filename)).st_size
+                file_extension = format_split_filename(filename)[1]
+
+                file = File(path=file_path,
+                            size=file_size,
+                            extension=file_extension)
 
                 yield file
 
+    @staticmethod
+    def root_validation(root: str):
+        def check_path(path):
+            if not os.path.exists(path):
+                raise FileNotFoundError
 
+        if root is not None:
+            try:
+                check_path(root)
+            except FileNotFoundError as file_error:
+                print("--------------------------------- ")
+                print(f"{FormatASCIIStyle.RED}Error! ")
+                print("Specified folder does not exist!")
+                print(f"{file_error}")
+                print(f"Try once again.{FormatASCIIStyle.RESET}")
+                print("---------------------------------")
+                sys.exit(2)
 
+            return root
 
+        else:
 
-
-
+            return os.path.abspath(os.path.curdir)
