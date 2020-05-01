@@ -7,7 +7,7 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
-   DiscUsage_Console.DUCore.DUDataStruct
+   DiscUsage_Console.DUCore.DUArgParser
    DiscUsage_Console.DUCore.DUFileCrawler
    DiscUsage_Console.DUCore.DUSpinner
 
