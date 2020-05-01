@@ -4,7 +4,6 @@ from DiscUsage_Console.DUUtilities.DUFormatTools import format_split_filename, f
 from collections import namedtuple
 
 import os
-import sys
 import time
 import argparse
 from ctypes import c_ulong

@@ -12,7 +12,7 @@ class ArgParser(argparse.ArgumentParser):
     def __init__(self):
         super().__init__()
 
-        self.description = 'DiskUsage [OPTIONS] <SEARCH_DIR> \n\t ' \
+        self.description = 'DiskUsage [OPTIONS] <SEARCH_DIR>.\n\t' \
                            'Lists files contained in a specified directory.\n\t' \
                            'Generates an ASCII table with file path and its size.\n' \
                            'For more info run `host_docs_local.py` from Docs folder\n'
@@ -51,45 +51,38 @@ class ArgParserTablesInit:
         if self.args.owner:
             table.append(pwd.getpwuid(file.user_owner).pw_name)
             table.append(pwd.getpwuid(file.group_owner).pw_name)
-            if "USER" or "GROUP" in self._headers:
-                return
-            self._headers.append("USER")
-            self._headers.append("GROUP")
-            self._colalign.append("center")
-            self._colalign.append("center")
+            if "USER" and "GROUP" not in self._headers:
+                self._headers.append("USER")
+                self._headers.append("GROUP")
+                self._colalign.append("center")
+                self._colalign.append("center")
         if self.args.inode:
             table.append(file.inode)
-            if "INODE" in self._headers:
-                return
-            self._headers.append("INODE")
-            self._colalign.append("center")
+            if "INODE" not in self._headers:
+                self._headers.append("INODE")
+                self._colalign.append("center")
         if self.args.device:
             table.append(file.device)
-            if "DEVICE" in self._headers:
-                return
-            self._headers.append("DEVICE")
-            self._colalign.append("center")
+            if "DEVICE" not in self._headers:
+                self._headers.append("DEVICE")
+                self._colalign.append("center")
         if self.args.links:
             table.append(file.links)
-            if "LINKS" in self._headers:
-                return
-            self._headers.append("LINKS")
-            self._colalign.append("center")
+            if "LINKS" not in self._headers:
+                self._headers.append("LINKS")
+                self._colalign.append("center")
         if self.args.adate:
             table.append(file.adate)
-            if "ACCESS" in self._headers:
-                return
-            self._headers.append("ACCESS")
-            self._colalign.append("center")
+            if "ACCESS" not in self._headers:
+                self._headers.append("ACCESS")
+                self._colalign.append("center")
         if self.args.mdate:
             table.append(file.mdate)
-            if "MODIFIED" in self._headers:
-                return
-            self._headers.append("MODIFIED")
-            self._colalign.append("center")
+            if "MODIFIED" not in self._headers:
+                self._headers.append("MODIFIED")
+                self._colalign.append("center")
 
         self._tables.append(table)
-
 
     @property
     def headers(self):
@@ -97,7 +90,8 @@ class ArgParserTablesInit:
 
     @property
     def colalign(self):
-        return tuple(self._headers)
+        # Convert colalign to tuple requested by "tabulate"
+        return tuple(self._colalign)
 
     @property
     def tables(self):
