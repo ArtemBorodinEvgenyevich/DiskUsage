@@ -1,31 +1,31 @@
 # -*- coding: utf-8 -*-
 
 from tabulate import tabulate
-from DUCore.DUSpinner import Spinner
-from DUCore.DUFileCrawler import FileCrawler
-from DUCore.DUArgParser import ArgParser
-from DUUtilities.DUFormatTools import format_convert_size, FormatASCIIStyle
+from DiscUsage_Console.DUCore.DUSpinner import Spinner
+from DiscUsage_Console.DUCore.DUFileCrawler import FileCrawler
+from DiscUsage_Console.DUCore.DUArgParser import ArgParser
+from DiscUsage_Console.DUUtilities.DUFormatTools import *
 
 import sys
-import os
 
-
-def check_path(search_path: str):
-    if not os.path.exists(search_path):
-        raise FileNotFoundError
-
-    return search_path
+# TODO: remove
+# Dirty hack for windows compatibility... fck'in hate it.
+try:
+    import pwd
+except ImportError:
+    import winpwd as pwd
 
 
 def main() -> None:
     # Init argument parser, threads and tables
-    parser = ArgParser(description='DiskUsage [OPTIONS] <SEARCH_DIR> \n\t'
-                                   'Lists files contained in a specified directory.\n\t'
-                                   'Generates an ASCII table with file path and its size.\n')
+    parser = ArgParser()
     args = parser.parse_args()
     tables = []
     crawler = FileCrawler(args=args)
     waiting_ico = Spinner()
+
+    # Init basic table headers and alignment. Requirement for "tabulate" module
+    headers, colalign = format_columns(args=args)
 
     # Catching possible errors during program execution.
     try:
@@ -38,29 +38,45 @@ def main() -> None:
             if args.extension is not None and file.extension != args.extension:
                 continue
             table = [file.path, format_convert_size(file.size), file.extension]
+
+            # TODO Add content after creating a column.
+            # TODO Separate from main somehow...
+            # Check if additional columns are needed
+            if args.owner:
+                table.append(pwd.getpwuid(file.user_owner).pw_name)
+                table.append(pwd.getpwuid(file.group_owner).pw_name)
+            if args.inode:
+                table.append(file.inode)
+            if args.device:
+                table.append(file.device)
+            if args.links:
+                table.append(file.links)
+
+            if args.adate:
+                table.append(file.adate)
+            if args.mdate:
+                table.append(file.mdate)
+
             tables.append(table)
 
         # Check for internal tabulate function error.
         # IndexError raised in case no elements in tables or invalid data passed.
         try:
-            headers = ["PATH", "SIZE", "EXTENSION"]
+            # Convert colalign to tuple requested by "tabulate"
             output_tables = tabulate(tables, headers=headers, tablefmt="fancy_grid",
-                                     colalign=("left", "center", "center"))
+                                     colalign=tuple(colalign))
             print(output_tables)
-        except (IndexError, AttributeError) as table_error:
-            print("\r--------------------------------- ")
-            print("There are no such files.")
-            print("Please, try again.")
-            print(f"{FormatASCIIStyle.RED}{table_error}{FormatASCIIStyle.RESET}")
-            print("---------------------------------")
+        except (IndexError, AttributeError) as error:
+            format_print_error(exception=error, text="Tabulate error")
             sys.exit(4)
 
-    except (KeyboardInterrupt, FileNotFoundError, FileExistsError) as runtime_error:
+    except (FileNotFoundError, FileExistsError) as warning:
         waiting_ico.stop()
-        print("\r--------------------------------- ")
-        print("Crawling has been stopped.")
-        print(f"{FormatASCIIStyle.YELLOW}{runtime_error}{FormatASCIIStyle.RESET}")
-        print("---------------------------------")
+        format_print_warning(exception=warning, text="Crawling has been stopped.")
+        sys.exit(2)
+    except KeyboardInterrupt as warning:
+        waiting_ico.stop()
+        format_print_warning(exception=warning, text="Crawling has been stopped.")
         sys.exit(130)
 
 
