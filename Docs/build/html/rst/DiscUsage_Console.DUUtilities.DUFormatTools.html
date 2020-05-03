@@ -167,39 +167,12 @@
             
   <div class="section" id="module-DiscUsage_Console.DUUtilities.DUFormatTools">
 <span id="discusage-console-duutilities-duformattools-module"></span><h1>DiscUsage_Console.DUUtilities.DUFormatTools module<a class="headerlink" href="#module-DiscUsage_Console.DUUtilities.DUFormatTools" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
-<dt id="DiscUsage_Console.DUUtilities.DUFormatTools.format_convert_size">
-<code class="sig-prename descclassname">DiscUsage_Console.DUUtilities.DUFormatTools.</code><code class="sig-name descname">format_convert_size</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size_bytes</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUUtilities.DUFormatTools.format_convert_size" title="Permalink to this definition">¶</a></dt>
-<dd><p>Utility for human-read size conversion.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>size_bytes</strong> – </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="DiscUsage_Console.DUUtilities.DUFormatTools.format_split_filename">
-<code class="sig-prename descclassname">DiscUsage_Console.DUUtilities.DUFormatTools.</code><code class="sig-name descname">format_split_filename</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUUtilities.DUFormatTools.format_split_filename" title="Permalink to this definition">¶</a></dt>
-<dd><p>Utility for splitting filename from extension.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>filename</strong> – </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
+<p>A module containing functions for text formatting</p>
 <dl class="py class">
 <dt id="DiscUsage_Console.DUUtilities.DUFormatTools.FormatASCIIStyle">
 <em class="property">class </em><code class="sig-prename descclassname">DiscUsage_Console.DUUtilities.DUFormatTools.</code><code class="sig-name descname">FormatASCIIStyle</code><a class="headerlink" href="#DiscUsage_Console.DUUtilities.DUFormatTools.FormatASCIIStyle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Structure provided special ASCII characters for console output editing.</p>
+<p>Structure provided ANSI escape sequences for console output editing.</p>
 <dl class="py attribute">
 <dt id="DiscUsage_Console.DUUtilities.DUFormatTools.FormatASCIIStyle.RESET">
 <code class="sig-name descname">RESET</code><em class="property"> = '\x1b[0m'</em><a class="headerlink" href="#DiscUsage_Console.DUUtilities.DUFormatTools.FormatASCIIStyle.RESET" title="Permalink to this definition">¶</a></dt>
@@ -278,21 +251,138 @@
 <dl class="py method">
 <dt id="DiscUsage_Console.DUUtilities.DUFormatTools.FormatASCIIStyle.custom_style">
 <em class="property">static </em><code class="sig-name descname">custom_style</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">colour</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">background</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUUtilities.DUFormatTools.FormatASCIIStyle.custom_style" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create own unique ASCII symbol style.</p>
+<dd><p>Create custom style for ASCII characters output.
+You can combine: char style(mode), char colour and char background color
+to create unique output.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">RESET</span></code> sequence after using your style to return to default char style.</p>
+</div>
+<ul class="simple">
+<li><p>mode: <code class="docutils literal notranslate"><span class="pre">NORMAL</span></code>, <code class="docutils literal notranslate"><span class="pre">BRIGHT</span></code>, <code class="docutils literal notranslate"><span class="pre">ITALIC</span></code>, <code class="docutils literal notranslate"><span class="pre">UNDERLINE</span></code>, <code class="docutils literal notranslate"><span class="pre">BLINK</span></code></p></li>
+<li><p>colour: <code class="docutils literal notranslate"><span class="pre">GREY</span></code>, <code class="docutils literal notranslate"><span class="pre">RED</span></code>, <code class="docutils literal notranslate"><span class="pre">GREEN</span></code>, <code class="docutils literal notranslate"><span class="pre">YELLOW</span></code>, <code class="docutils literal notranslate"><span class="pre">BLUE</span></code>, <code class="docutils literal notranslate"><span class="pre">PURPLE</span></code>, <code class="docutils literal notranslate"><span class="pre">CYAN</span></code>, <code class="docutils literal notranslate"><span class="pre">WHITE</span></code></p></li>
+<li><p>special: <code class="docutils literal notranslate"><span class="pre">RESET</span></code>, <code class="docutils literal notranslate"><span class="pre">CLEAR</span></code></p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> – </p></li>
-<li><p><strong>colour</strong> – </p></li>
-<li><p><strong>background</strong> – </p></li>
+<li><p><strong>mode</strong> – <strong>–</strong> char style sequence</p></li>
+<li><p><strong>colour</strong> – <strong>–</strong> char colour sequence</p></li>
+<li><p><strong>background</strong> – <strong>–</strong> char background colour sequence</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p><strong>–</strong> escape sequence</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><strong>–</strong> <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt id="DiscUsage_Console.DUUtilities.DUFormatTools.format_convert_size">
+<code class="sig-prename descclassname">DiscUsage_Console.DUUtilities.DUFormatTools.</code><code class="sig-name descname">format_convert_size</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size_bytes</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUUtilities.DUFormatTools.format_convert_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert bytes to human-read metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size_bytes</strong> – <strong>–</strong> bytes to convert</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>–</strong> string with size and size name</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><strong>–</strong> <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="DiscUsage_Console.DUUtilities.DUFormatTools.format_split_filename">
+<code class="sig-prename descclassname">DiscUsage_Console.DUUtilities.DUFormatTools.</code><code class="sig-name descname">format_split_filename</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUUtilities.DUFormatTools.format_split_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split file name from its extension like <code class="docutils literal notranslate"><span class="pre">.png</span></code> or <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> – <strong>–</strong> file name to separate from extension</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>–</strong> extension name</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><strong>–</strong> <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="DiscUsage_Console.DUUtilities.DUFormatTools.format_extract_depth">
+<code class="sig-prename descclassname">DiscUsage_Console.DUUtilities.DUFormatTools.</code><code class="sig-name descname">format_extract_depth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">searchpath</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">fullpath</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUUtilities.DUFormatTools.format_extract_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get number of file depth relative to search root.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>searchpath</strong> – <strong>–</strong> file search root</p></li>
+<li><p><strong>fullpath</strong> – <strong>–</strong> full path to file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>–</strong> difference between amount of separators in param paths</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><strong>–</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="DiscUsage_Console.DUUtilities.DUFormatTools.format_replace_char">
+<code class="sig-prename descclassname">DiscUsage_Console.DUUtilities.DUFormatTools.</code><code class="sig-name descname">format_replace_char</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">char</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUUtilities.DUFormatTools.format_replace_char" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace specific char in string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – <strong>–</strong> string to modify</p></li>
+<li><p><strong>char</strong> – <strong>–</strong> changed char</p></li>
+<li><p><strong>index</strong> – <strong>–</strong> char index in string to replace</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>–</strong> modified string</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><strong>–</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="DiscUsage_Console.DUUtilities.DUFormatTools.format_print_error">
+<code class="sig-prename descclassname">DiscUsage_Console.DUUtilities.DUFormatTools.</code><code class="sig-name descname">format_print_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exception</span><span class="p">:</span> <span class="n">BaseException</span></em>, <em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Error'</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#DiscUsage_Console.DUUtilities.DUFormatTools.format_print_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a well formatted error message. Output error will be coloured in red.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exception</strong> – <strong>–</strong> caught exception to output</p></li>
+<li><p><strong>text</strong> – <strong>–</strong> message text output</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="DiscUsage_Console.DUUtilities.DUFormatTools.format_print_warning">
+<code class="sig-prename descclassname">DiscUsage_Console.DUUtilities.DUFormatTools.</code><code class="sig-name descname">format_print_warning</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exception</span><span class="p">:</span> <span class="n">BaseException</span></em>, <em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Error'</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#DiscUsage_Console.DUUtilities.DUFormatTools.format_print_warning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a well formatted warning message. Output warning will be coloured in yellow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exception</strong> – <strong>–</strong> caught exception to output</p></li>
+<li><p><strong>text</strong> – <strong>–</strong> message text output</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

@@ -1,15 +1,20 @@
 # -*- coding: utf-8 -*-
+"""Enter point for :mod:`DiskUsage_Console`
 
+Creates tables for output and catches possible exceptions that might occur at a runtime.
+
+"""
 from tabulate import tabulate
-from DiscUsage_Console.DUCore.DUSpinner import Spinner
-from DiscUsage_Console.DUCore.DUFileCrawler import FileCrawler
-from DiscUsage_Console.DUCore.DUArgParser import ArgParser, ArgParserTablesInit
-from DiscUsage_Console.DUUtilities.DUFormatTools import *
+from DUCore.DUSpinner import Spinner
+from DUCore.DUFileCrawler import FileCrawler
+from DUCore.DUArgParser import *
+from DUUtilities.DUFormatTools import *
 
 import sys
 
 
 def main() -> None:
+    """Main script to execute."""
     # Init argument parser, threads and tables
     parser = ArgParser()
     args = parser.parse_args()
@@ -18,6 +23,7 @@ def main() -> None:
     waiting_ico = Spinner()
 
     # Catching possible errors during program execution.
+    # Getting file info
     try:
         waiting_ico.start()
         files = [file for file in crawler.get_files()]
@@ -29,10 +35,32 @@ def main() -> None:
         # Check for internal tabulate function error.
         # IndexError raised in case no elements in tables or invalid data passed.
         try:
-            print(tables_init.headers, tables_init.colalign)
-            output_tables = tabulate(tables_init.tables, headers=tables_init.headers,
-                                     tablefmt="fancy_grid", colalign=tables_init.colalign)
+            # Print result
+            # Init data for tables
+            tables = tables_init.tables
+            colalign = tables_init.colalign
+            headers = tables_init.headers
+
+            output_tables = tabulate(tables, headers=headers,
+                                     tablefmt="fancy_grid", colalign=colalign)
             print(output_tables)
+
+            # Try to write result to file
+            try:
+                if args.output is not None:
+                    with open(args.output[0], 'w') as out_file:
+                        # Try to use user defined table style
+                        try:
+                            output_tables = tabulate(tables, headers=headers,
+                                                     tablefmt=args.output[1], colalign=colalign)
+                            out_file.write(output_tables)
+                        except IndentationError:
+                            output_tables = tabulate(tables, headers=headers,
+                                                     tablefmt="simple", colalign=colalign)
+                            out_file.write(output_tables)
+            except (IsADirectoryError, FileNotFoundError) as error:
+                format_print_warning(exception=error, text="File hasn't been written")
+
         except (IndexError, AttributeError) as error:
             format_print_error(exception=error, text="Tabulate error")
             sys.exit(4)

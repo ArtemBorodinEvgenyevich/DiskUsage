@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+"""A module containing functions for text formatting"""
+import os
 import math
-from os import path
 import argparse
 
 
 class FormatASCIIStyle:
-    """Structure provided special ASCII characters for console output editing."""
+    """Structure provided ANSI escape sequences for console output editing."""
     RESET = "\033[0m"
     CLEAR = "\033[2J"
 
@@ -27,22 +28,33 @@ class FormatASCIIStyle:
     @staticmethod
     def custom_style(mode: int, colour: int, background: int):
         """
-        Create own unique ASCII symbol style.
+        Create custom style for ASCII characters output.
+        You can combine: char style(mode), char colour and char background color
+        to create unique output.
 
-        :param mode:
-        :param colour:
-        :param background:
-        :return:
+        .. note::
+            Use ``RESET`` sequence after using your style to return to default char style.
+
+        * mode: ``NORMAL``, ``BRIGHT``, ``ITALIC``, ``UNDERLINE``, ``BLINK``
+        * colour: ``GREY``, ``RED``, ``GREEN``, ``YELLOW``, ``BLUE``, ``PURPLE``, ``CYAN``, ``WHITE``
+        * special: ``RESET``, ``CLEAR``
+
+        :param mode: **--** char style sequence
+        :param colour: **--** char colour sequence
+        :param background: **--** char background colour sequence
+        :return: **--** escape sequence
+        :rtype: **--** ``string``
         """
         return f"\033[{mode};{colour};{background}m"
 
 
 def format_convert_size(size_bytes: int):
     """
-    Utility for human-read size conversion.
+    Convert bytes to human-read metrics.
 
-    :param size_bytes:
-    :return:
+    :param size_bytes: **--** bytes to convert
+    :return: **--** string with size and size name
+    :rtype: **--** ``string``
     """
     if size_bytes == 0:
         return "0B"
@@ -58,47 +70,49 @@ def format_convert_size(size_bytes: int):
 
 def format_split_filename(filename: str):
     """
-    Utility for splitting filename from extension.
+    Split file name from its extension like ``.png`` or ``.tar.gz``
 
-    :param filename:
-    :return:
+    :param filename: **--** file name to separate from extension
+    :return: **--** extension name
+    :rtype: **--** ``string``
     """
     if len(filename.split(".")) > 2:
         return filename.split('.')[0], '.'.join(filename.split('.')[-2:])
-    return path.splitext(filename)
+    return os.path.splitext(filename)
 
 
-def format_columns(args: argparse.Namespace):
-    headers = ["PATH", "SIZE", "EXTENSION"]
-    colalign = ["left", "center", "center"]
+def format_extract_depth(searchpath: str, fullpath: str):
+    """Get number of file depth relative to search root.
 
-    if args.owner:
-        headers.append("USER")
-        headers.append("GROUP")
-        colalign.append("center")
-        colalign.append("center")
-    if args.inode:
-        headers.append("INODE")
-        colalign.append("center")
-    if args.device:
-        headers.append("DEVICE")
-        colalign.append("center")
-    if args.links:
-        headers.append("LINKS")
-        colalign.append("center")
+    :param searchpath: **--** file search root
+    :param fullpath: **--** full path to file
+    :return: **--** difference between amount of separators in param paths
+    :rtype: **--** ``int``
+    """
+    searchpath_sep = searchpath.count(os.sep)
+    fullpath_sep = fullpath.count(os.sep)
+    return fullpath_sep - searchpath_sep
 
-    if args.adate:
-        headers.append("ACCESS")
-        colalign.append("center")
-    if args.mdate:
-        headers.append("MODIFIED")
-        colalign.append("center")
 
-    return headers, colalign
+def format_replace_char(string: str, char: str, index: int):
+    """Replace specific char in string.
+
+    :param string: **--** string to modify
+    :param char: **--** changed char
+    :param index: **--** char index in string to replace
+    :return: **--** modified string
+    :rtype: **--** ``str``
+    """
+    return string[:index] + char + string[index + 1:]
 
 
 # FIXME: see if docs displays correctly. Repair if not.
-def format_print_error(exception: BaseException, text: str = "Error"):
+def format_print_error(exception: BaseException, text: str = "Error") -> None:
+    """Print a well formatted error message. Output error will be coloured in red.
+
+    :param exception: **--** caught exception to output
+    :param text: **--** message text output
+    """
     print("\r--------------------------------- ")
     print(text)
     print(f"{FormatASCIIStyle.RED}{exception}{FormatASCIIStyle.RESET}")
@@ -106,7 +120,12 @@ def format_print_error(exception: BaseException, text: str = "Error"):
     print("\r--------------------------------- ")
 
 
-def format_print_warning(exception: BaseException, text: str = "Error"):
+def format_print_warning(exception: BaseException, text: str = "Error") -> None:
+    """Print a well formatted warning message. Output warning will be coloured in yellow.
+
+    :param exception: **--** caught exception to output
+    :param text: **--** message text output
+    """
     print("\r--------------------------------- ")
     print(text)
     print(f"{FormatASCIIStyle.YELLOW}{exception}{FormatASCIIStyle.RESET}")
