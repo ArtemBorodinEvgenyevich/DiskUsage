@@ -2,14 +2,17 @@
 """A module containing class for extracting files and theirs attributes from specified path.
 """
 from DUUtilities.DUFormatTools import *
+from ctypes import c_ulong
 from collections import namedtuple
 
 import os
+import sys
 import stat
 import time
 import argparse
-import platform
-from ctypes import c_ulong
+
+if sys.platform == "win32":
+    from DUUtilities.DUWinSecurityInfo import get_file_security
 
 
 File = namedtuple("File", ["path", "size", "extension",
@@ -17,14 +20,10 @@ File = namedtuple("File", ["path", "size", "extension",
                            "user_owner", "group_owner",
                            "inode", "device", "permissions",
                            "depth"])
-"""File attributes.
-
-
+"""File attributes:
 
 .. py:attribute:: path
-    
-    :noindex:
-     
+        
     **-** path to the found file
     
      .. note::
@@ -119,13 +118,21 @@ class FileCrawler:
                 file_a_time = time.ctime(stats.st_atime)
                 file_m_time = time.ctime(stats.st_mtime)
                 file_links_num = stats.st_nlink
-                file_user_owner = stats.st_uid
-                file_group_owner = stats.st_gid
                 # Using ctypes to avoid negative value on Linux
                 file_inode = c_ulong(stats.st_ino).value
                 file_device = stats.st_dev
                 file_permissions = self.get_file_permission(os.path.join(root, filename))
                 file_depth = format_extract_depth(self._root, os.path.join(root, filename))
+
+                if sys.platform == "win32":
+                    pSD = get_file_security(os.path.join(root, filename))
+                    file_user_owner, file_owner_domain, owner_sid_type = pSD.get_owner()
+                    if file_owner_domain:
+                        file_user_owner = f"{file_owner_domain}\\{file_user_owner} ({owner_sid_type})"
+                        file_group_owner = None
+                else:
+                    file_user_owner = stats.st_uid
+                    file_group_owner = stats.st_gid
 
                 file = File(path=file_path, size=file_size, extension=file_extension,
                             adate=file_a_time, mdate=file_m_time, links=file_links_num,
