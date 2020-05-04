@@ -60,14 +60,20 @@ File = namedtuple("File", ["path", "size", "extension",
 .. py:attribute:: group_owner
 
     **-** file group owner ID
+    
+    .. note::
+        Will not be used on **Windows OS**. Default value: ``None``
 
 .. py:attribute:: inode
 
     **-** inode structure ID
+    
+    .. note::
+        File ID will be shown instead of inode if using **Windows OS**.
 
 .. py:attribute:: device
 
-    **-** device ID the file inode resides on
+    **-** device ID the file inode/file id resides on
     
 .. py:attribute:: permissions
 
