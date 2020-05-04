@@ -1,7 +1,7 @@
 DiscUsage\_Console.main module
 ==============================
 
-.. automodule:: DiscUsage_Console.main
+.. automodule:: main
    :members:
    :undoc-members:
    :show-inheritance:
