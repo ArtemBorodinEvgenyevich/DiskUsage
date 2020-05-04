@@ -8,7 +8,7 @@
 
 """
 
-
+import sys
 import argparse
 from DUUtilities.DUFormatTools import format_convert_size
 
@@ -16,7 +16,7 @@ from DUUtilities.DUFormatTools import format_convert_size
 try:
     import pwd
 except ImportError:
-    import winpwd as pwd
+    pass
 
 
 class ArgParser(argparse.ArgumentParser):
@@ -27,15 +27,13 @@ class ArgParser(argparse.ArgumentParser):
         self.description = 'DiskUsage [OPTIONS] <SEARCH_DIR>.\n\t' \
                            'Lists files contained in a specified directory.\n\t' \
                            'Generates an ASCII table with file path and its size.\n' \
-                           'For more info run `host_docs_local.py` from Docs folder\n'
+                           'For more info run `host_docs_local.py` from docs folder\n'
 
         self.add_argument("search_dir", nargs='?', help="Files searching directory. If not specified current "
                                                         "directory is used.")
 
         self.add_argument("-a", "--absolute", action="store_true", help="show absolute path to file")
-        self.add_argument("-d", "--device", action="store_true", help="show device inode resides on")
         self.add_argument("-e", "--extension", type=str, help="show files match specified extension")
-        self.add_argument("-i", "--inode", action="store_true", help="show inode number")
         self.add_argument("-l", "--links", action="store_true", help="show number of links to the inode")
         self.add_argument("-o", "--output", nargs=2, metavar=("filepath", "style"),
                           help="write result to file; please, specify output dir and print style")
@@ -45,6 +43,13 @@ class ArgParser(argparse.ArgumentParser):
         self.add_argument("-A", "--adate", action="store_true", help="show date of most recent access")
         self.add_argument("-M", "--mdate", action="store_true", help="show date of most recent content "
                                                                      "modification")
+
+        if sys.platform == "win32":
+            self.add_argument("-i", "--inode", action="store_true", help="show file ID number")
+            self.add_argument("-d", "--device", action="store_true", help="show device file ID resides on")
+        else:
+            self.add_argument("-i", "--inode", action="store_true", help="show inode number")
+            self.add_argument("-d", "--device", action="store_true", help="show device inode resides on")
 
         self.sort_group = self.add_mutually_exclusive_group()
         self.sort_group.add_argument("-sd", "--sort_depth", action="store_true",
@@ -84,11 +89,18 @@ class ArgParserTablesInit:
         table = {"PATH": file.path, "SIZE": format_convert_size(file.size), "EXTENSION": file.extension}
 
         if self.args.owner:
-            table.update({"USER": pwd.getpwuid(file.user_owner).pw_name})
-            table.update({"GROUP": pwd.getpwuid(file.group_owner).pw_name})
+            if sys.platform == "win32":
+                table.update({"OWNER": file.user_owner})
+            else:
+                # Interpret id as user/group name
+                table.update({"USER": pwd.getpwuid(file.user_owner).pw_name})
+                table.update({"GROUP": pwd.getpwuid(file.group_owner).pw_name})
 
         if self.args.inode:
-            table.update({"INODE": file.inode})
+            if sys.platform == "win32":
+                table.update({"FILE ID": file.inode})
+            else:
+                table.update({"INODE": file.inode})
 
         if self.args.device:
             table.update({"DEVICE": file.device})
