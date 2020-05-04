@@ -12,7 +12,6 @@ import sys
 import argparse
 from DUUtilities.DUFormatTools import format_convert_size
 
-# Dirty hack for windows compatibility... fck'in hate it.
 try:
     import pwd
 except ImportError:
@@ -91,6 +90,7 @@ class ArgParserTablesInit:
             if sys.platform == "win32":
                 table.update({"OWNER": file.user_owner})
             else:
+                # TODO: move to DUFileCrawler
                 # Interpret id as user/group name
                 table.update({"USER": pwd.getpwuid(file.user_owner).pw_name})
                 table.update({"GROUP": pwd.getpwuid(file.group_owner).pw_name})
@@ -178,7 +178,6 @@ class ArgParserTablesInit:
         """
         t = []
         if self.args.sort_depth:
-            print(self._tables[0].keys())
             sorted_tables = sorted(self._tables, key=lambda x: (x.get("depth"), len(x.get("PATH"))))
             for i in sorted_tables:
                 i.pop("depth")

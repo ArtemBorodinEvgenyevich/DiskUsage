@@ -2,7 +2,6 @@
 """A module containing class for extracting files and theirs attributes from specified path.
 """
 from DUUtilities.DUFormatTools import *
-from DUUtilities.DUWinSecurityInfo import get_file_security
 from ctypes import c_ulong
 from collections import namedtuple
 
@@ -11,6 +10,9 @@ import sys
 import stat
 import time
 import argparse
+
+if sys.platform == "win32":
+    from DUUtilities.DUWinSecurityInfo import get_file_security
 
 
 File = namedtuple("File", ["path", "size", "extension",
