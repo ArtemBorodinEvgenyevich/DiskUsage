@@ -179,12 +179,13 @@ class ArgParserTablesInit:
         """
         t = []
         if self.args.sort_depth:
-            sorted_tables = sorted(self._tables, key=lambda x: x.get("depth"))
+            print(self._tables[0].keys())
+            sorted_tables = sorted(self._tables, key=lambda x: (x.get("depth"), len(x.get("PATH"))))
             for i in sorted_tables:
                 i.pop("depth")
                 t.append(list(i.values()))
         elif self.args.sort_size:
-            sorted_tables = sorted(self._tables, key=lambda x: x.get("size"))
+            sorted_tables = sorted(self._tables, key=lambda x: (x.get("size"), len(x.get("PATH"))))
             for i in sorted_tables:
                 i.pop("size")
                 t.append(list(i.values()))
