@@ -35,8 +35,7 @@ class ArgParser(argparse.ArgumentParser):
         self.add_argument("-a", "--absolute", action="store_true", help="show absolute path to file")
         self.add_argument("-e", "--extension", type=str, help="show files match specified extension")
         self.add_argument("-l", "--links", action="store_true", help="show number of links to the inode")
-        self.add_argument("-o", "--output", nargs=2, metavar=("filepath", "style"),
-                          help="write result to file; please, specify output dir and print style")
+        self.add_argument("-o", "--output", nargs=2, metavar=("FILEPATH", "STYLE"), help="write result to file")
         self.add_argument("-p", "--permissions", action="store_true", help="show file permissions in Unix-like form")
         self.add_argument("-w", "--owner", action="store_true", help="show file owner")
 
