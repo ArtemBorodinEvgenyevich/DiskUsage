@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DiscUsage_Console.DUCore.DUArgParser module &mdash; DiskUsage 0.5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DiscUsage_Console.DUCore.DUFileCrawler module" href="DiscUsage_Console.DUCore.DUFileCrawler.html" />
+    <link rel="prev" title="DiscUsage_Console.DUCore package" href="DiscUsage_Console.DUCore.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> DiskUsage
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">DiskUsage application</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="DiscUsage_Console.html">DiscUsage_Console package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="DiscUsage_Console.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="DiscUsage_Console.DUCore.html">DiscUsage_Console.DUCore package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="DiscUsage_Console.DUCore.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DiscUsage_Console.DUCore.html#module-DiscUsage_Console.DUCore">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="DiscUsage_Console.DUUtilities.html">DiscUsage_Console.DUUtilities package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="DiscUsage_Console.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DiscUsage_Console.html#module-DiscUsage_Console">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DiskUsage</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="DiscUsage_Console.html">DiscUsage_Console package</a> &raquo;</li>
+        
+          <li><a href="DiscUsage_Console.DUCore.html">DiscUsage_Console.DUCore package</a> &raquo;</li>
+        
+      <li>DiscUsage_Console.DUCore.DUArgParser module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rst/DiscUsage_Console.DUCore.DUArgParser.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-DUCore.DUArgParser">
+<span id="discusage-console-ducore-duargparser-module"></span><h1>DiscUsage_Console.DUCore.DUArgParser module<a class="headerlink" href="#module-DUCore.DUArgParser" title="Permalink to this headline">¶</a></h1>
+<p>A module containing classes that deal with python built-in <code class="docutils literal notranslate"><span class="pre">argparse</span></code> module.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>May not properly work on Windows due to lack of pwd module.
+Reinstall python interpreter if no <code class="docutils literal notranslate"><span class="pre">winpwd</span></code> was found.</p>
+</div>
+<dl class="py class">
+<dt id="DUCore.DUArgParser.ArgParser">
+<em class="property">class </em><code class="sig-prename descclassname">DUCore.DUArgParser.</code><code class="sig-name descname">ArgParser</code><a class="headerlink" href="#DUCore.DUArgParser.ArgParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></p>
+<p>Base class to define and parse command-line options and arguments.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="DUCore.DUArgParser.ArgParserTablesInit">
+<em class="property">class </em><code class="sig-prename descclassname">DUCore.DUArgParser.</code><code class="sig-name descname">ArgParserTablesInit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">argparse.Namespace</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUArgParser.ArgParserTablesInit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for tables, headers and column alignment initialization.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not recall <a class="reference internal" href="#DUCore.DUArgParser.ArgParserTablesInit.tables" title="DUCore.DUArgParser.ArgParserTablesInit.tables"><code class="xref py py-func docutils literal notranslate"><span class="pre">tables()</span></code></a> property in case you have already use it!
+It will try to operate with non-existing dictionary which leads to <code class="xref py py-class docutils literal notranslate"><span class="pre">IndexError</span></code> exception.</p>
+</div>
+<dl class="py method">
+<dt id="DUCore.DUArgParser.ArgParserTablesInit.add_table">
+<code class="sig-name descname">add_table</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span><span class="p">:</span> <span class="n">File</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUArgParser.ArgParserTablesInit.add_table" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file</strong> – <strong>–</strong> reference to the <a class="reference internal" href="DiscUsage_Console.DUCore.DUFileCrawler.html#DUCore.DUFileCrawler.File" title="DUCore.DUFileCrawler.File"><code class="xref py py-class docutils literal notranslate"><span class="pre">DUCore.DUFileCrawler.File</span></code></a> named tuple.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>-</strong> list of files’ attributes represented as dictionary.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><strong>-</strong> <code class="docutils literal notranslate"><span class="pre">list</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="DUCore.DUArgParser.ArgParserTablesInit.headers">
+<em class="property">property </em><code class="sig-name descname">headers</code><a class="headerlink" href="#DUCore.DUArgParser.ArgParserTablesInit.headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access to generated headers.
+Original - <code class="xref py py-func docutils literal notranslate"><span class="pre">self._headers()</span></code> class attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>-</strong> list of generated table headers</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><strong>-</strong> <code class="docutils literal notranslate"><span class="pre">list</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="DUCore.DUArgParser.ArgParserTablesInit.colalign">
+<em class="property">property </em><code class="sig-name descname">colalign</code><a class="headerlink" href="#DUCore.DUArgParser.ArgParserTablesInit.colalign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access to generated column alignment arguments.
+Original - <code class="xref py py-func docutils literal notranslate"><span class="pre">self._colalign()</span></code> class attribute</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Converts <code class="docutils literal notranslate"><span class="pre">list</span></code> to <code class="docutils literal notranslate"><span class="pre">tuple</span></code>. This is requested by <code class="xref py py-mod docutils literal notranslate"><span class="pre">tabulate</span></code> module.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>-</strong> list of column alignment flags</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><strong>-</strong> <code class="docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="DUCore.DUArgParser.ArgParserTablesInit.tables">
+<em class="property">property </em><code class="sig-name descname">tables</code><a class="headerlink" href="#DUCore.DUArgParser.ArgParserTablesInit.tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access to generated tables (<cite>file attributes to show</cite>).
+Original - <code class="xref py py-func docutils literal notranslate"><span class="pre">self._tables()</span></code> class attribute</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A little hack was implemented for file <strong>depth</strong> and size <strong>sorting</strong>.
+These file attributes have been transferred among other attributes but they should not be shown.
+Method deletes the last dictionaru pair.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Fills <code class="xref py py-func docutils literal notranslate"><span class="pre">self._headers()</span></code> class field after execution.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It will remove</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>-</strong> list with print ready tables content</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><strong>-</strong> <code class="docutils literal notranslate"><span class="pre">list</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="DiscUsage_Console.DUCore.DUFileCrawler.html" class="btn btn-neutral float-right" title="DiscUsage_Console.DUCore.DUFileCrawler module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="DiscUsage_Console.DUCore.html" class="btn btn-neutral float-left" title="DiscUsage_Console.DUCore package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Artem Borodin
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

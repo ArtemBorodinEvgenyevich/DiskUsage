@@ -27,7 +27,7 @@ File = namedtuple("File", ["path", "size", "extension",
     **-** path to the found file
     
      .. note::
-        depending on command-line arguments can be absolute or relative
+        Depending on command-line arguments can be absolute or relative.
         
     
 .. py:attribute:: size
@@ -55,19 +55,25 @@ File = namedtuple("File", ["path", "size", "extension",
     **-** file owner user ID
     
     .. note::
-        Owner ID converted to name
+        Owner ID converted to name.
 
 .. py:attribute:: group_owner
 
     **-** file group owner ID
+    
+    .. note::
+        Will not be used on **Windows OS**. Default value: ``None``
 
 .. py:attribute:: inode
 
     **-** inode structure ID
+    
+    .. note::
+        File ID will be shown instead of inode if using **Windows OS**.
 
 .. py:attribute:: device
 
-    **-** device ID the file inode resides on
+    **-** device ID the file inode/file id resides on
     
 .. py:attribute:: permissions
 
@@ -78,7 +84,7 @@ File = namedtuple("File", ["path", "size", "extension",
     **-** file depth in a file tree
     
     .. warning::
-        Due to different hacks for file sorting, this parameter should be always in the end
+        Due to different hacks for file sorting, this parameter should be always placed in the end.
 """
 
 
@@ -100,7 +106,7 @@ class FileCrawler:
         """Start recursive search in specified path for files and theirs attributes.
 
         .. note::
-            Extracts all listed file attributes, no matter were they specified by command-line arguments
+            Extracts all listed file attributes, no matter were they specified by command-line arguments.
 
         :return: **--** generator with files
         :rtype: **-** ``iter``
@@ -170,7 +176,7 @@ class FileCrawler:
         """Get file permission mask bits and interpret them in Unix-like form.
 
         :param path: **--** path to file
-        :return: **--** string which represents Unix-like file permissions e.g :mod:`-rwxrwxrwx`
+        :return: **--** string which represents Unix-like file permissions: :mod:`-rwxrwxrwx`
         :rtype: **-** ``string``
         """
         output = "---------"

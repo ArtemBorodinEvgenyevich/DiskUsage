@@ -1,12 +1,11 @@
-"""A module to call windows `GetNamedSecurityInfo <https://msdn.microsoft.com/en-us/library/aa446645>`. Allows to get
-Security Identifier and see file owner. This is a copy from `stackoverflow answer
-<https://stackoverflow.com/questions/8086412/howto-determine-file-owner-on-windows-using-python-without-pywin32>`
+"""A module to call windows GetNamedSecurityInfo_. Allows to get
+Security Identifier and see file owner. This code is a copy from stackoverflow_.
+
+.. _GetNamedSecurityInfo: https://msdn.microsoft.com/en-us/library/aa446645
+.. _stackoverflow: https://stackoverflow.com/a/8089576/10171242
 
 .. note::
-    Requirements
-    ----------
-
-    .. bibliographic fields (which also require a transform):
+    **Requirements:**
 
         :Minimum supported client: Windows XP [desktop apps | UWP apps]
         :Minimum supported server: Windows Server 2003 [desktop apps | UWP apps]
