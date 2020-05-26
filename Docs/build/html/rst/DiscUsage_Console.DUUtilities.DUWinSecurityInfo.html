@@ -165,81 +165,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-DUUtilities.DUWinSecurityInfo">
-<span id="discusage-console-duutilities-duwinsecurityinfo-module"></span><h1>DiscUsage_Console.DUUtilities.DUWinSecurityInfo module<a class="headerlink" href="#module-DUUtilities.DUWinSecurityInfo" title="Permalink to this headline">¶</a></h1>
-<p>A module to call windows <a class="reference external" href="https://msdn.microsoft.com/en-us/library/aa446645">GetNamedSecurityInfo</a>. Allows to get
-Security Identifier and see file owner. This code is a copy from <a class="reference external" href="https://stackoverflow.com/a/8089576/10171242">stackoverflow</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Requirements:</strong></p>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">Minimum supported client</dt>
-<dd class="field-odd"><p>Windows XP [desktop apps | UWP apps]</p>
-</dd>
-<dt class="field-even">Minimum supported server</dt>
-<dd class="field-even"><p>Windows Server 2003 [desktop apps | UWP apps]</p>
-</dd>
-</dl>
-</div></blockquote>
-</div>
-<dl class="py class">
-<dt id="DUUtilities.DUWinSecurityInfo.SIDNameUse">
-<em class="property">class </em><code class="sig-prename descclassname">DUUtilities.DUWinSecurityInfo.</code><code class="sig-name descname">SIDNameUse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUUtilities.DUWinSecurityInfo.SIDNameUse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ctypes.c_ulong</span></code></p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="DUUtilities.DUWinSecurityInfo.PSID_NAME_USE">
-<code class="sig-prename descclassname">DUUtilities.DUWinSecurityInfo.</code><code class="sig-name descname">PSID_NAME_USE</code><a class="headerlink" href="#DUUtilities.DUWinSecurityInfo.PSID_NAME_USE" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">DUUtilities.DUWinSecurityInfo.LP_SIDNameUse</span></code></p>
-</dd></dl>
-
-<dl class="py class">
-<dt id="DUUtilities.DUWinSecurityInfo.PLOCAL">
-<em class="property">class </em><code class="sig-prename descclassname">DUUtilities.DUWinSecurityInfo.</code><code class="sig-name descname">PLOCAL</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">needs_free</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUUtilities.DUWinSecurityInfo.PLOCAL" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ctypes.c_void_p</span></code></p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="DUUtilities.DUWinSecurityInfo.PACL">
-<code class="sig-prename descclassname">DUUtilities.DUWinSecurityInfo.</code><code class="sig-name descname">PACL</code><a class="headerlink" href="#DUUtilities.DUWinSecurityInfo.PACL" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <a class="reference internal" href="#DUUtilities.DUWinSecurityInfo.PLOCAL" title="DUUtilities.DUWinSecurityInfo.PLOCAL"><code class="xref py py-class docutils literal notranslate"><span class="pre">DUUtilities.DUWinSecurityInfo.PLOCAL</span></code></a></p>
-</dd></dl>
-
-<dl class="py class">
-<dt id="DUUtilities.DUWinSecurityInfo.PSID">
-<em class="property">class </em><code class="sig-prename descclassname">DUUtilities.DUWinSecurityInfo.</code><code class="sig-name descname">PSID</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">needs_free</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUUtilities.DUWinSecurityInfo.PSID" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#DUUtilities.DUWinSecurityInfo.PLOCAL" title="DUUtilities.DUWinSecurityInfo.PLOCAL"><code class="xref py py-class docutils literal notranslate"><span class="pre">DUUtilities.DUWinSecurityInfo.PLOCAL</span></code></a></p>
-</dd></dl>
-
-<dl class="py class">
-<dt id="DUUtilities.DUWinSecurityInfo.PSecurityDescriptor">
-<em class="property">class </em><code class="sig-prename descclassname">DUUtilities.DUWinSecurityInfo.</code><code class="sig-name descname">PSecurityDescriptor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">needs_free</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUUtilities.DUWinSecurityInfo.PSecurityDescriptor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#DUUtilities.DUWinSecurityInfo.PLOCAL" title="DUUtilities.DUWinSecurityInfo.PLOCAL"><code class="xref py py-class docutils literal notranslate"><span class="pre">DUUtilities.DUWinSecurityInfo.PLOCAL</span></code></a></p>
-<dl class="py method">
-<dt id="DUUtilities.DUWinSecurityInfo.PSecurityDescriptor.get_owner">
-<code class="sig-name descname">get_owner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">system_name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUUtilities.DUWinSecurityInfo.PSecurityDescriptor.get_owner" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="DUUtilities.DUWinSecurityInfo.PSecurityDescriptor.get_group">
-<code class="sig-name descname">get_group</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">system_name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUUtilities.DUWinSecurityInfo.PSecurityDescriptor.get_group" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt id="DUUtilities.DUWinSecurityInfo.look_up_account_sid">
-<code class="sig-prename descclassname">DUUtilities.DUWinSecurityInfo.</code><code class="sig-name descname">look_up_account_sid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sid</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#DUUtilities.DUWinSecurityInfo.PSID" title="DUUtilities.DUWinSecurityInfo.PSID">DUUtilities.DUWinSecurityInfo.PSID</a></span></em>, <em class="sig-param"><span class="n">system_name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUUtilities.DUWinSecurityInfo.look_up_account_sid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="DUUtilities.DUWinSecurityInfo.get_file_security">
-<code class="sig-prename descclassname">DUUtilities.DUWinSecurityInfo.</code><code class="sig-name descname">get_file_security</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">request</span><span class="p">:</span> <span class="n">bytes</span> <span class="o">=</span> <span class="default_value">23</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUUtilities.DUWinSecurityInfo.get_file_security" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get file Security Identifier.</p>
-</dd></dl>
-
+  <div class="section" id="discusage-console-duutilities-duwinsecurityinfo-module">
+<h1>DiscUsage_Console.DUUtilities.DUWinSecurityInfo module<a class="headerlink" href="#discusage-console-duutilities-duwinsecurityinfo-module" title="Permalink to this headline">¶</a></h1>
 </div>
 
 

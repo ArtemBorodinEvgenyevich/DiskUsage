@@ -4,10 +4,12 @@
 from DUUtilities.DUFormatTools import *
 from ctypes import c_ulong
 from collections import namedtuple
+from treelib import Tree
 
 import os
 import sys
 import stat
+import zlib
 import time
 import argparse
 
@@ -201,3 +203,76 @@ class FileCrawler:
             output = format_replace_char(output, 'x', 9)
 
         return output
+
+
+class FileTree:
+    """Unix-like tree utility to print directory contents.
+
+            .. note::
+                Does not hold any values, prints all info during path walking.
+
+    """
+    def __init__(self, args: argparse.Namespace):
+        self.dirCount = 0
+        self.fileCount = 0
+
+        self._root = self.root_validation(args.search_dir)
+
+    def print_tree(self):
+        print(self._root)
+        self._walk(self._root)
+        print("\n" + self._summary())
+
+    def _register(self, absolute):
+        """Increase a dir/file counter if founded"""
+        if os.path.isdir(absolute):
+            self.dirCount += 1
+        else:
+            self.fileCount += 1
+
+    def _summary(self):
+        """Print how many files and directories have been founded"""
+        return str(self.dirCount) + " directories, " + str(self.fileCount) + " files"
+
+    def _walk(self, directory, prefix=""):
+        """Search for dirs and files"""
+        filepaths = sorted([filepath for filepath in os.listdir(directory)])
+
+        for index in range(len(filepaths)):
+            if filepaths[index][0] == ".":
+                continue
+
+            absolute = os.path.join(directory, filepaths[index])
+            self._register(absolute)
+
+            if index == len(filepaths) - 1:
+                print(prefix + "└── " + filepaths[index])
+                if os.path.isdir(absolute):
+                    self._walk(absolute, prefix + "    ")
+            else:
+                print(prefix + "├── " + filepaths[index])
+                if os.path.isdir(absolute):
+                    self._walk(absolute, prefix + "│   ")
+
+    @staticmethod
+    def root_validation(root: str):
+        """Check if specified path do exist.
+
+        .. note::
+            If path was not specified, then current dir path is taken.
+
+        :param root: **--** specified path to validate
+        :exception exception: **-** ``FileNotFound``
+        :return: **--** path to search in
+        :rtype: **-** ``string``
+        """
+
+        def check_path(path):
+            if not os.path.exists(path):
+                raise FileNotFoundError
+
+        if root is not None:
+            check_path(root)
+            return root
+        else:
+            return os.path.abspath(os.path.curdir)

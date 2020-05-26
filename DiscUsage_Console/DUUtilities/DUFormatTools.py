@@ -2,7 +2,6 @@
 """A module containing functions for text formatting"""
 import os
 import math
-import argparse
 
 
 class FormatASCIIStyle:

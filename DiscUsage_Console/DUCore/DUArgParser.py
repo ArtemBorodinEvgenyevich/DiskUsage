@@ -36,6 +36,7 @@ class ArgParser(argparse.ArgumentParser):
         self.add_argument("-l", "--links", action="store_true", help="show number of links to the inode")
         self.add_argument("-o", "--output", nargs=2, metavar=("FILEPATH", "STYLE"), help="write result to file")
         self.add_argument("-p", "--permissions", action="store_true", help="show file permissions in Unix-like form")
+        self.add_argument("-t", "--tree", action="store_true", help="show dir content instead of statistics")
         self.add_argument("-w", "--owner", action="store_true", help="show file owner")
 
         self.add_argument("-A", "--adate", action="store_true", help="show date of most recent access")
@@ -50,9 +51,14 @@ class ArgParser(argparse.ArgumentParser):
             self.add_argument("-d", "--device", action="store_true", help="show device inode resides on")
 
         self.sort_group = self.add_mutually_exclusive_group()
-        self.sort_group.add_argument("-sd", "--sort_depth", action="store_true",
-                                     help="sort output result by file depth")
-        self.sort_group.add_argument("-ss", "--sort_size", action="store_true", help="sort output by file size")
+        self.sort_group.add_argument("-sdt", "--sort_depth_top", action="store_true",
+                                     help="sort output result by file depth from top to bottom")
+        self.sort_group.add_argument("-sdb", "--sort_depth_bottom", action="store_true",
+                                     help="sort output result by file depth from bottom to top")
+        self.sort_group.add_argument("-ssh", "--sort_size_high", action="store_true",
+                                     help="sort output by file size from high to low")
+        self.sort_group.add_argument("-ssl", "--sort_size_low", action="store_true",
+                                     help="sort output by file size from low to high")
 
 
 class ArgParserTablesInit:
@@ -119,9 +125,9 @@ class ArgParserTablesInit:
         # Here's a dirty trick for depth/size sort.
         # Added elements will be removed after tables sort.
         # These args check ALWAYS should be the last!
-        if self.args.sort_depth:
+        if self.args.sort_depth_top or self.args.sort_depth_bottom:
             table.update({"depth": file.depth})
-        elif self.args.sort_size:
+        elif self.args.sort_size_high or self.args.sort_size_low:
             table.update({"size": file.size})
 
         self._tables.append(table)
@@ -177,13 +183,23 @@ class ArgParserTablesInit:
         :rtype: **-** ``list``
         """
         t = []
-        if self.args.sort_depth:
+        if self.args.sort_depth_bottom:
             sorted_tables = sorted(self._tables, key=lambda x: (x.get("depth"), len(x.get("PATH"))))
             for i in sorted_tables:
                 i.pop("depth")
                 t.append(list(i.values()))
-        elif self.args.sort_size:
+        elif self.args.sort_depth_top:
+            sorted_tables = sorted(self._tables, key=lambda x: (x.get("depth"), len(x.get("PATH"))), reverse=True)
+            for i in sorted_tables:
+                i.pop("depth")
+                t.append(list(i.values()))
+        elif self.args.sort_size_low:
             sorted_tables = sorted(self._tables, key=lambda x: (x.get("size"), len(x.get("PATH"))))
+            for i in sorted_tables:
+                i.pop("size")
+                t.append(list(i.values()))
+        elif self.args.sort_size_high:
+            sorted_tables = sorted(self._tables, key=lambda x: (x.get("size"), len(x.get("PATH"))), reverse=True)
             for i in sorted_tables:
                 i.pop("size")
                 t.append(list(i.values()))

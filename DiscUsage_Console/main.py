@@ -6,7 +6,7 @@ Creates tables for output and catches possible exceptions that might occur at a 
 """
 from tabulate import tabulate
 from DUCore.DUSpinner import Spinner
-from DUCore.DUFileCrawler import FileCrawler
+from DUCore.DUFileCrawler import FileCrawler, FileTree
 from DUCore.DUArgParser import *
 from DUUtilities.DUFormatTools import *
 
@@ -18,6 +18,12 @@ def main() -> None:
     # Init argument parser, threads and tables
     parser = ArgParser()
     args = parser.parse_args()
+
+    # Check if tree output only
+    if args.tree:
+        FileTree(args=args).print_tree()
+        exit(0)
+
     tables_init = ArgParserTablesInit(args=args)
     crawler = FileCrawler(args=args)
     waiting_ico = Spinner()
