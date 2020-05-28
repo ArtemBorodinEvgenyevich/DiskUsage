@@ -41,7 +41,7 @@ def main() -> None:
 
     # Check if tree output only
     if args.tree:
-        FileTree(path=args.searchdir).print_tree()
+        FileTree(path=args.search_dir).print_tree()
         sys.exit(0)
 
     tables_init = ArgParserTablesInit(args=args)
