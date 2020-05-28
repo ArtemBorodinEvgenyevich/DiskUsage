@@ -51,6 +51,10 @@ class ArgParser(argparse.ArgumentParser):
             self.add_argument("-i", "--inode", action="store_true", help="show inode number")
             self.add_argument("-d", "--device", action="store_true", help="show device inode resides on")
 
+        self.add_argument("-spu", "--sort_permission_user", type=str, help="sort by user permission by adding string "
+                                                                           "after: {-p rw :r - by read, w - by write}")
+        self.add_argument("-spg", "--sort_permission_group", type=str, help="sort by group permission by adding string "
+                                                                            "after: {-p rw :r - by read, w - by write}")
         self.sort_group = self.add_mutually_exclusive_group()
         self.sort_group.add_argument("-sdt", "--sort_depth_top", action="store_true",
                                      help="sort output result by file depth from top to bottom")
@@ -90,6 +94,16 @@ class ArgParserTablesInit:
         """
         if self.args.extension is not None and file.extension != self.args.extension:
             return
+
+        if self.args.sort_permission_user is not None:
+            permission = f"{file.permissions[1]}{file.permissions[2]}"
+            if permission != self.args.sort_permission_user:
+                return
+
+        if self.args.sort_permission_group is not None:
+            permission = f"{file.permissions[4]}{file.permissions[5]}"
+            if permission != self.args.sort_permission_user:
+                return
 
         table = {"PATH": file.path, "SIZE": format_convert_size(file.size), "EXTENSION": file.extension}
 
