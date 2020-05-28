@@ -10,14 +10,6 @@ Subpackages
    DiscUsage_Console.DUCore
    DiscUsage_Console.DUUtilities
 
-Submodules
-----------
-
-.. toctree::
-   :maxdepth: 4
-
-   DiscUsage_Console.main
-
 Module contents
 ---------------
 

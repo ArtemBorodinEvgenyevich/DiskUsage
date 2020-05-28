@@ -82,7 +82,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">DiskUsage application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">DiskUsage console utility</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="DiscUsage_Console.html">DiscUsage_Console package</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="DiscUsage_Console.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="DiscUsage_Console.DUCore.html">DiscUsage_Console.DUCore package</a><ul class="current">
@@ -93,7 +93,6 @@
 <li class="toctree-l3"><a class="reference internal" href="DiscUsage_Console.DUUtilities.html">DiscUsage_Console.DUUtilities package</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="DiscUsage_Console.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DiscUsage_Console.html#module-DiscUsage_Console">Module contents</a></li>
 </ul>
 </li>
@@ -165,8 +164,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-DUCore.DUArgParser">
-<span id="discusage-console-ducore-duargparser-module"></span><h1>DiscUsage_Console.DUCore.DUArgParser module<a class="headerlink" href="#module-DUCore.DUArgParser" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-DiscUsage_Console.DUCore.DUArgParser">
+<span id="discusage-console-ducore-duargparser-module"></span><h1>DiscUsage_Console.DUCore.DUArgParser module<a class="headerlink" href="#module-DiscUsage_Console.DUCore.DUArgParser" title="Permalink to this headline">¶</a></h1>
 <p>A module containing classes that deal with python built-in <code class="docutils literal notranslate"><span class="pre">argparse</span></code> module.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -174,28 +173,28 @@
 Reinstall python interpreter if no <code class="docutils literal notranslate"><span class="pre">winpwd</span></code> was found.</p>
 </div>
 <dl class="py class">
-<dt id="DUCore.DUArgParser.ArgParser">
-<em class="property">class </em><code class="sig-prename descclassname">DUCore.DUArgParser.</code><code class="sig-name descname">ArgParser</code><a class="headerlink" href="#DUCore.DUArgParser.ArgParser" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUArgParser.ArgParser">
+<em class="property">class </em><code class="sig-prename descclassname">DiscUsage_Console.DUCore.DUArgParser.</code><code class="sig-name descname">ArgParser</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUArgParser.ArgParser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></p>
 <p>Base class to define and parse command-line options and arguments.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="DUCore.DUArgParser.ArgParserTablesInit">
-<em class="property">class </em><code class="sig-prename descclassname">DUCore.DUArgParser.</code><code class="sig-name descname">ArgParserTablesInit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">argparse.Namespace</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUArgParser.ArgParserTablesInit" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit">
+<em class="property">class </em><code class="sig-prename descclassname">DiscUsage_Console.DUCore.DUArgParser.</code><code class="sig-name descname">ArgParserTablesInit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">argparse.Namespace</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class for tables, headers and column alignment initialization.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Do not recall <a class="reference internal" href="#DUCore.DUArgParser.ArgParserTablesInit.tables" title="DUCore.DUArgParser.ArgParserTablesInit.tables"><code class="xref py py-func docutils literal notranslate"><span class="pre">tables()</span></code></a> property in case you have already use it!
+<p>Do not recall <a class="reference internal" href="#DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit.tables" title="DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit.tables"><code class="xref py py-func docutils literal notranslate"><span class="pre">tables()</span></code></a> property in case you have already use it!
 It will try to operate with non-existing dictionary which leads to <code class="xref py py-class docutils literal notranslate"><span class="pre">IndexError</span></code> exception.</p>
 </div>
 <dl class="py method">
-<dt id="DUCore.DUArgParser.ArgParserTablesInit.add_table">
-<code class="sig-name descname">add_table</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span><span class="p">:</span> <span class="n">File</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUArgParser.ArgParserTablesInit.add_table" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit.add_table">
+<code class="sig-name descname">add_table</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span><span class="p">:</span> <span class="n">File</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit.add_table" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>file</strong> – <strong>–</strong> reference to the <a class="reference internal" href="DiscUsage_Console.DUCore.DUFileCrawler.html#DUCore.DUFileCrawler.File" title="DUCore.DUFileCrawler.File"><code class="xref py py-class docutils literal notranslate"><span class="pre">DUCore.DUFileCrawler.File</span></code></a> named tuple.</p>
+<dd class="field-odd"><p><strong>file</strong> – <strong>–</strong> reference to the <code class="xref py py-class docutils literal notranslate"><span class="pre">DUCore.DUFileCrawler.File</span></code> named tuple.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>-</strong> list of files’ attributes represented as dictionary.</p>
@@ -207,8 +206,8 @@ It will try to operate with non-existing dictionary which leads to <code class="
 </dd></dl>
 
 <dl class="py method">
-<dt id="DUCore.DUArgParser.ArgParserTablesInit.headers">
-<em class="property">property </em><code class="sig-name descname">headers</code><a class="headerlink" href="#DUCore.DUArgParser.ArgParserTablesInit.headers" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit.headers">
+<em class="property">property </em><code class="sig-name descname">headers</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit.headers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Access to generated headers.
 Original - <code class="xref py py-func docutils literal notranslate"><span class="pre">self._headers()</span></code> class attribute</p>
 <dl class="field-list simple">
@@ -222,8 +221,8 @@ Original - <code class="xref py py-func docutils literal notranslate"><span clas
 </dd></dl>
 
 <dl class="py method">
-<dt id="DUCore.DUArgParser.ArgParserTablesInit.colalign">
-<em class="property">property </em><code class="sig-name descname">colalign</code><a class="headerlink" href="#DUCore.DUArgParser.ArgParserTablesInit.colalign" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit.colalign">
+<em class="property">property </em><code class="sig-name descname">colalign</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit.colalign" title="Permalink to this definition">¶</a></dt>
 <dd><p>Access to generated column alignment arguments.
 Original - <code class="xref py py-func docutils literal notranslate"><span class="pre">self._colalign()</span></code> class attribute</p>
 <div class="admonition note">
@@ -241,8 +240,8 @@ Original - <code class="xref py py-func docutils literal notranslate"><span clas
 </dd></dl>
 
 <dl class="py method">
-<dt id="DUCore.DUArgParser.ArgParserTablesInit.tables">
-<em class="property">property </em><code class="sig-name descname">tables</code><a class="headerlink" href="#DUCore.DUArgParser.ArgParserTablesInit.tables" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit.tables">
+<em class="property">property </em><code class="sig-name descname">tables</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUArgParser.ArgParserTablesInit.tables" title="Permalink to this definition">¶</a></dt>
 <dd><p>Access to generated tables (<cite>file attributes to show</cite>).
 Original - <code class="xref py py-func docutils literal notranslate"><span class="pre">self._tables()</span></code> class attribute</p>
 <div class="admonition note">
