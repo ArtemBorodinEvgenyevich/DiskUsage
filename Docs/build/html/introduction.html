@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>DiskUsage application &mdash; DiskUsage 0.5.0 documentation</title>
+  <title>DiskUsage console utility &mdash; DiskUsage 0.5.0 documentation</title>
   
 
   
@@ -82,8 +82,10 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">DiskUsage application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DiskUsage console utility</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docs">Docs:</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="rst/DiscUsage_Console.html">DiscUsage_Console package</a></li>
@@ -132,7 +134,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>DiskUsage application</li>
+      <li>DiskUsage console utility</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -151,13 +153,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="diskusage-application">
-<h1>DiskUsage application<a class="headerlink" href="#diskusage-application" title="Permalink to this headline">¶</a></h1>
-<p>Application for listing files’ sizes in a specific directory.</p>
-<div class="section" id="how-to-use">
-<h2>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
-<p>Run as <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">main.py</span> <span class="pre">[dir/to/search/in]</span></code>.</p>
-<p>If no directory was specified, then current directory is using.</p>
+  <div class="section" id="diskusage-console-utility">
+<h1>DiskUsage console utility<a class="headerlink" href="#diskusage-console-utility" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://www.python.org/"><img alt="forthebadge made-with-python" src="http://ForTheBadge.com/images/badges/made-with-python.svg" /></a></p>
+<div class="section" id="description">
+<h2>Description:<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Simple console utility for displaying directory contents and theirs properties.</p>
+<p>Shows directory contents:</p>
+<ul class="simple">
+<li><p>file path</p></li>
+<li><p>file extension</p></li>
+<li><p>file permissions</p></li>
+<li><p>file owner</p></li>
+<li><p>file access/modify date</p></li>
+<li><p>inode</p></li>
+<li><p>device id inode resides on</p></li>
+<li><p>links number to a file</p></li>
+</ul>
+<p>Allows sorting from high to low and vice-versa:</p>
+<ul class="simple">
+<li><p>by depth</p></li>
+<li><p>by size</p></li>
+</ul>
+<p>Allows result output in a single file with any table format supported by <a class="reference external" href="https://pypi.org/project/tabulate/">tabulate</a></p>
+<p>Supports directory tree view output.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage:<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Works on OS like: Windows, Linux. (should work on MacOS, haven’t tested yet)</p>
+<p>Minimal required python version - <code class="docutils literal notranslate"><span class="pre">3.7</span></code></p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">disk_usage.py</span> <span class="pre">[PATH-TO-DIR]</span></code> to start search in specified directory. Current path is using, if no given.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">disk_usage.py</span> <span class="pre">-h</span></code> to see a detailed info about arguements.</p>
+</div>
+<div class="section" id="docs">
+<h2>Docs:<a class="headerlink" href="#docs" title="Permalink to this headline">¶</a></h2>
+<p>To see docs, run <code class="docutils literal notranslate"><span class="pre">host_docs_local.py</span></code> from <code class="docutils literal notranslate"><span class="pre">/Docs</span></code> folder. It will open docs in your system default web browser.
+You can also rebuild docs from source using <code class="docutils literal notranslate"><span class="pre">build_html.py</span></code> (Requires <code class="docutils literal notranslate"><span class="pre">sphinx</span> <span class="pre">sphinx_rtd_theme</span> <span class="pre">recommonmark</span></code> to be installed)</p>
 </div>
 </div>
 

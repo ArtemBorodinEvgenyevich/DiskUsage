@@ -1,7 +1,7 @@
 DiscUsage\_Console.DUCore.DUFileCrawler module
 ==============================================
 
-.. automodule:: DUCore.DUFileCrawler
+.. automodule:: DiscUsage_Console.DUCore.DUFileCrawler
    :members:
    :undoc-members:
    :show-inheritance:

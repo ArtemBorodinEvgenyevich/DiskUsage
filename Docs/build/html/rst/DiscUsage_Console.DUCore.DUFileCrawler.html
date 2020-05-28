@@ -82,7 +82,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">DiskUsage application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">DiskUsage console utility</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="DiscUsage_Console.html">DiscUsage_Console package</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="DiscUsage_Console.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="DiscUsage_Console.DUCore.html">DiscUsage_Console.DUCore package</a><ul class="current">
@@ -93,7 +93,6 @@
 <li class="toctree-l3"><a class="reference internal" href="DiscUsage_Console.DUUtilities.html">DiscUsage_Console.DUUtilities package</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="DiscUsage_Console.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DiscUsage_Console.html#module-DiscUsage_Console">Module contents</a></li>
 </ul>
 </li>
@@ -165,17 +164,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-DUCore.DUFileCrawler">
-<span id="discusage-console-ducore-dufilecrawler-module"></span><h1>DiscUsage_Console.DUCore.DUFileCrawler module<a class="headerlink" href="#module-DUCore.DUFileCrawler" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-DiscUsage_Console.DUCore.DUFileCrawler">
+<span id="discusage-console-ducore-dufilecrawler-module"></span><h1>DiscUsage_Console.DUCore.DUFileCrawler module<a class="headerlink" href="#module-DiscUsage_Console.DUCore.DUFileCrawler" title="Permalink to this headline">¶</a></h1>
 <p>A module containing class for extracting files and theirs attributes from specified path.</p>
 <dl class="py class">
-<dt id="DUCore.DUFileCrawler.File">
-<em class="property">class </em><code class="sig-prename descclassname">DUCore.DUFileCrawler.</code><code class="sig-name descname">File</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="n">extension</span></em>, <em class="sig-param"><span class="n">adate</span></em>, <em class="sig-param"><span class="n">mdate</span></em>, <em class="sig-param"><span class="n">links</span></em>, <em class="sig-param"><span class="n">user_owner</span></em>, <em class="sig-param"><span class="n">group_owner</span></em>, <em class="sig-param"><span class="n">inode</span></em>, <em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">permissions</span></em>, <em class="sig-param"><span class="n">depth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUFileCrawler.File" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File">
+<em class="property">class </em><code class="sig-prename descclassname">DiscUsage_Console.DUCore.DUFileCrawler.</code><code class="sig-name descname">File</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="n">extension</span></em>, <em class="sig-param"><span class="n">adate</span></em>, <em class="sig-param"><span class="n">mdate</span></em>, <em class="sig-param"><span class="n">links</span></em>, <em class="sig-param"><span class="n">user_owner</span></em>, <em class="sig-param"><span class="n">group_owner</span></em>, <em class="sig-param"><span class="n">inode</span></em>, <em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">permissions</span></em>, <em class="sig-param"><span class="n">depth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
 <p>File attributes:</p>
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.path">
-<code class="sig-name descname">path</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.path" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.path">
+<code class="sig-name descname">path</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.path" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> path to the found file</p>
 <blockquote>
 <div><div class="admonition note">
@@ -186,38 +185,38 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.size">
-<code class="sig-name descname">size</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.size" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.size">
+<code class="sig-name descname">size</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.size" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> file size in bytes</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.extension">
-<code class="sig-name descname">extension</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.extension" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.extension">
+<code class="sig-name descname">extension</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.extension" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> file extension</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.adate">
-<code class="sig-name descname">adate</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.adate" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.adate">
+<code class="sig-name descname">adate</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.adate" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> the most recent file access date</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.mdate">
-<code class="sig-name descname">mdate</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.mdate" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.mdate">
+<code class="sig-name descname">mdate</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.mdate" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> the most recent file content modification date</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.links">
-<code class="sig-name descname">links</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.links" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.links">
+<code class="sig-name descname">links</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.links" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> overall amount of links to the file</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.user_owner">
-<code class="sig-name descname">user_owner</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.user_owner" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.user_owner">
+<code class="sig-name descname">user_owner</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.user_owner" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> file owner user ID</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -226,8 +225,8 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.group_owner">
-<code class="sig-name descname">group_owner</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.group_owner" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.group_owner">
+<code class="sig-name descname">group_owner</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.group_owner" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> file group owner ID</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -236,8 +235,8 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.inode">
-<code class="sig-name descname">inode</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.inode" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.inode">
+<code class="sig-name descname">inode</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.inode" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> inode structure ID</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -246,20 +245,20 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.device">
-<code class="sig-name descname">device</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.device" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.device">
+<code class="sig-name descname">device</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.device" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> device ID the file inode/file id resides on</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.permissions">
-<code class="sig-name descname">permissions</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.permissions" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.permissions">
+<code class="sig-name descname">permissions</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.permissions" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> file read, write and execute permissions for different groups</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="DUCore.DUFileCrawler.File.depth">
-<code class="sig-name descname">depth</code><a class="headerlink" href="#DUCore.DUFileCrawler.File.depth" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.File.depth">
+<code class="sig-name descname">depth</code><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.File.depth" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>-</strong> file depth in a file tree</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -267,88 +266,16 @@
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt id="id0">
-<em class="property">property </em><code class="sig-name descname">adate</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 3</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="id1">
-<em class="property">property </em><code class="sig-name descname">depth</code><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 11</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="id2">
-<em class="property">property </em><code class="sig-name descname">device</code><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 9</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="id3">
-<em class="property">property </em><code class="sig-name descname">extension</code><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 2</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="id4">
-<em class="property">property </em><code class="sig-name descname">group_owner</code><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 7</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="id5">
-<em class="property">property </em><code class="sig-name descname">inode</code><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 8</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="id6">
-<em class="property">property </em><code class="sig-name descname">links</code><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 5</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="id7">
-<em class="property">property </em><code class="sig-name descname">mdate</code><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 4</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="id8">
-<em class="property">property </em><code class="sig-name descname">path</code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 0</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="id9">
-<em class="property">property </em><code class="sig-name descname">permissions</code><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 10</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="id10">
-<em class="property">property </em><code class="sig-name descname">size</code><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 1</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="id11">
-<em class="property">property </em><code class="sig-name descname">user_owner</code><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 6</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
-<dt id="DUCore.DUFileCrawler.FileCrawler">
-<em class="property">class </em><code class="sig-prename descclassname">DUCore.DUFileCrawler.</code><code class="sig-name descname">FileCrawler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">argparse.Namespace</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUFileCrawler.FileCrawler" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler">
+<em class="property">class </em><code class="sig-prename descclassname">DiscUsage_Console.DUCore.DUFileCrawler.</code><code class="sig-name descname">FileCrawler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">abs_path</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class for file searching and file attributes extraction.</p>
 <dl class="py method">
-<dt id="DUCore.DUFileCrawler.FileCrawler.get_files">
-<code class="sig-name descname">get_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUFileCrawler.FileCrawler.get_files" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler.get_files">
+<code class="sig-name descname">get_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler.get_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start recursive search in specified path for files and theirs attributes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -365,8 +292,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="DUCore.DUFileCrawler.FileCrawler.root_validation">
-<em class="property">static </em><code class="sig-name descname">root_validation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUFileCrawler.FileCrawler.root_validation" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler.root_validation">
+<em class="property">static </em><code class="sig-name descname">root_validation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler.root_validation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if specified path do exist.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -389,8 +316,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="DUCore.DUFileCrawler.FileCrawler.get_file_permission">
-<em class="property">static </em><code class="sig-name descname">get_file_permission</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUFileCrawler.FileCrawler.get_file_permission" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler.get_file_permission">
+<em class="property">static </em><code class="sig-name descname">get_file_permission</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.FileCrawler.get_file_permission" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get file permission mask bits and interpret them in Unix-like form.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -408,8 +335,8 @@
 </dd></dl>
 
 <dl class="py class">
-<dt id="DUCore.DUFileCrawler.FileTree">
-<em class="property">class </em><code class="sig-prename descclassname">DUCore.DUFileCrawler.</code><code class="sig-name descname">FileTree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">argparse.Namespace</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUFileCrawler.FileTree" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.FileTree">
+<em class="property">class </em><code class="sig-prename descclassname">DiscUsage_Console.DUCore.DUFileCrawler.</code><code class="sig-name descname">FileTree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.FileTree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Unix-like tree utility to print directory contents.</p>
 <div class="admonition note">
@@ -417,13 +344,13 @@
 <p>Does not hold any values, prints all info during path walking.</p>
 </div>
 <dl class="py method">
-<dt id="DUCore.DUFileCrawler.FileTree.print_tree">
-<code class="sig-name descname">print_tree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUFileCrawler.FileTree.print_tree" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.FileTree.print_tree">
+<code class="sig-name descname">print_tree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.FileTree.print_tree" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="DUCore.DUFileCrawler.FileTree.root_validation">
-<em class="property">static </em><code class="sig-name descname">root_validation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUFileCrawler.FileTree.root_validation" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUFileCrawler.FileTree.root_validation">
+<em class="property">static </em><code class="sig-name descname">root_validation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUFileCrawler.FileTree.root_validation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if specified path do exist.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

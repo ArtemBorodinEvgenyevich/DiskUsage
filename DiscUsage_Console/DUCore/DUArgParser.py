@@ -10,7 +10,7 @@
 
 import sys
 import argparse
-from DUUtilities.DUFormatTools import format_convert_size
+from DiscUsage_Console.DUUtilities.DUFormatTools import format_convert_size
 
 try:
     import pwd
@@ -20,6 +20,7 @@ except ImportError:
 
 class ArgParser(argparse.ArgumentParser):
     """Base class to define and parse command-line options and arguments."""
+
     def __init__(self):
         super().__init__()
 
@@ -70,13 +71,13 @@ class ArgParserTablesInit:
         It will try to operate with non-existing dictionary which leads to :class:`IndexError` exception.
 
     """
+
     def __init__(self, args: argparse.Namespace):
 
         self.args = args
 
-        # self._headers = ["PATH", "SIZE", "EXTENSION"]
         self._headers = []
-        self._colalign = ["left", "center", "center"]
+        self._colalign = ["left"]
         self._tables = []
 
     # FIXME: put proper instance name in file param
@@ -141,6 +142,8 @@ class ArgParserTablesInit:
         :return: **-** list of generated table headers
         :rtype: **-** ``list``
         """
+        self._headers = list(self._tables[0].keys())
+
         return self._headers
 
     @property
@@ -155,8 +158,8 @@ class ArgParserTablesInit:
         :return: **-** list of column alignment flags
         :rtype: **-** ``tuple``
         """
-        cnt = self._headers[3:]
-        for i in cnt:
+        cnt = self.headers[1:]
+        for _ in cnt:
             self._colalign.append("center")
 
         # Convert colalign to tuple requested by "tabulate"
@@ -206,7 +209,5 @@ class ArgParserTablesInit:
         else:
             for i in self._tables:
                 t.append(list(i.values()))
-
-        self._headers = list(self._tables[0].keys())
 
         return t

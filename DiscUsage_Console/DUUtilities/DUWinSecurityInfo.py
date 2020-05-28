@@ -1,5 +1,5 @@
 """A module to call windows GetNamedSecurityInfo_. Allows to get
-Security Identifier and see file owner. This code is a copy from stackoverflow_.
+Security Identifier and see file owner. This code is an answer from stackoverflow_.
 
 .. _GetNamedSecurityInfo: https://msdn.microsoft.com/en-us/library/aa446645
 .. _stackoverflow: https://stackoverflow.com/a/8089576/10171242
@@ -155,7 +155,6 @@ advapi32.GetNamedSecurityInfoW.argtypes = (
 
 
 def look_up_account_sid(sid: PSID, system_name=None):
-
     size = 256
     name = ctypes.create_unicode_buffer(size)
     domain = ctypes.create_unicode_buffer(size)
@@ -176,27 +175,26 @@ def get_file_security(file_name: str, request: bytes = _DEFAULT_SECURITY_INFORMA
 
     # N.B. This query may fail with ERROR_INVALID_FUNCTION
     # for some filesystems.
-    pSD = PSecurityDescriptor(needs_free=True)
+    psd = PSecurityDescriptor(needs_free=True)
     error = advapi32.GetNamedSecurityInfoW(file_name, SE_FILE_OBJECT, request,
-                                           ctypes.byref(pSD.pOwner), ctypes.byref(pSD.pGroup),
-                                           ctypes.byref(pSD.pDacl), ctypes.byref(pSD.pSacl),
-                                           ctypes.byref(pSD))
+                                           ctypes.byref(psd.pOwner), ctypes.byref(psd.pGroup),
+                                           ctypes.byref(psd.pDacl), ctypes.byref(psd.pSacl),
+                                           ctypes.byref(psd))
     if error != 0:
         raise ctypes.WinError(error)
-    return pSD
+    return psd
 
 
 if __name__ == '__main__':
-    if __name__ == '__main__':
-        import os, sys
+    import sys
 
-        filename = sys.argv[1]
+    filename = sys.argv[1]
 
-        pSD = get_file_security(filename)
-        owner_name, owner_domain, owner_sid_type = pSD.get_owner()
-        if owner_domain:
-            owner_name = '{}\\{}'.format(owner_domain, owner_name)
+    pSD = get_file_security(filename)
+    owner_name, owner_domain, owner_sid_type = pSD.get_owner()
+    if owner_domain:
+        owner_name = '{}\\{}'.format(owner_domain, owner_name)
 
-        print("Path : {}".format(filename))
-        print("Owner: {} ({})".format(owner_name, owner_sid_type))
-        print("SID  : {}".format(pSD.pOwner))
+    print("Path : {}".format(filename))
+    print("Owner: {} ({})".format(owner_name, owner_sid_type))
+    print("SID  : {}".format(pSD.pOwner))
