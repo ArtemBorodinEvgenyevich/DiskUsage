@@ -11,6 +11,7 @@ class Spinner(Thread):
     .. note::
          Works as a daemon.
     """
+
     def __init__(self, max_play=0, min_play=1, time_step=0.5):
         """
 
@@ -27,7 +28,6 @@ class Spinner(Thread):
         self._max_play = max_play
         self._min_play = min_play
         self._time_step = time_step
-        self._count = 0
 
         self.daemon = True
 

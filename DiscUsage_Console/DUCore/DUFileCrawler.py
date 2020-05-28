@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 """A module containing class for extracting files and theirs attributes from specified path.
 """
-from DUUtilities.DUFormatTools import *
+
+from DiscUsage_Console.DUUtilities.DUFormatTools import *
 from ctypes import c_ulong
 from collections import namedtuple
-from treelib import Tree
 
 import os
 import sys
 import stat
-import zlib
 import time
-import argparse
 
 if sys.platform == "win32":
     from DUUtilities.DUWinSecurityInfo import get_file_security
@@ -93,16 +91,18 @@ File = namedtuple("File", ["path", "size", "extension",
 class FileCrawler:
     """Class for file searching and file attributes extraction."""
 
-    def __init__(self, args: argparse.Namespace):
+    def __init__(self, path: str, abs_path: bool):
         """
 
-        :param args: **-** command line arguments for processing
-        :type args: **-** :class:``argparse.Namespace``
+        :param path: **-** command line arguments for processing
+        :param abs_path: **-** flag to show absolute path
+        :type path: **-** :class:``str``
+        :type abs_path: **-** :class:``bool``
         """
         super().__init__()
 
-        self._args = args
-        self._root = self.root_validation(args.search_dir)
+        self.abs_path = abs_path
+        self._root = self.root_validation(path)
 
     def get_files(self):
         """Start recursive search in specified path for files and theirs attributes.
@@ -117,7 +117,7 @@ class FileCrawler:
             for filename in files:
                 stats = os.stat(os.path.join(root, filename))
 
-                if self._args.absolute:
+                if self.abs_path:
                     file_path = os.path.join(root, filename)
                 else:
                     file_path = os.path.join(root, filename).rsplit(self._root)[1]
@@ -133,8 +133,8 @@ class FileCrawler:
                 file_depth = format_extract_depth(self._root, os.path.join(root, filename))
 
                 if sys.platform == "win32":
-                    pSD = get_file_security(os.path.join(root, filename))
-                    file_user_owner, file_owner_domain, owner_sid_type = pSD.get_owner()
+                    psd = get_file_security(os.path.join(root, filename))
+                    file_user_owner, file_owner_domain, owner_sid_type = psd.get_owner()
                     if file_owner_domain:
                         file_user_owner = f"{file_owner_domain}\\{file_user_owner} ({owner_sid_type})"
                         file_group_owner = None
@@ -171,7 +171,6 @@ class FileCrawler:
             return root
         else:
             return os.path.abspath(os.path.curdir)
-
 
     @staticmethod
     def get_file_permission(path: str):
@@ -212,11 +211,11 @@ class FileTree:
                 Does not hold any values, prints all info during path walking.
 
     """
-    def __init__(self, args: argparse.Namespace):
+    def __init__(self, path: str):
         self.dirCount = 0
         self.fileCount = 0
 
-        self._root = self.root_validation(args.search_dir)
+        self._root = self.root_validation(path)
 
     def print_tree(self):
         print(self._root)

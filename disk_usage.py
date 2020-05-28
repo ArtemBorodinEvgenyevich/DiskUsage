@@ -4,28 +4,48 @@
 Creates tables for output and catches possible exceptions that might occur at a runtime.
 
 """
-from tabulate import tabulate
-from DUCore.DUSpinner import Spinner
-from DUCore.DUFileCrawler import FileCrawler, FileTree
-from DUCore.DUArgParser import *
-from DUUtilities.DUFormatTools import *
 
-import sys
+from tabulate import tabulate
+from DiscUsage_Console.DUCore.DUSpinner import Spinner
+from DiscUsage_Console.DUCore.DUFileCrawler import FileCrawler, FileTree
+from DiscUsage_Console.DUCore.DUArgParser import *
+from DiscUsage_Console.DUUtilities.DUFormatTools import *
+
+
+def write_to_file(path, tablefmt, tables, headers, colalign):
+    try:
+        with open(path, 'w') as out_file:
+
+            # Try to use user defined table style
+
+            try:
+                output_tables = tabulate(tables, headers=headers,
+                                         tablefmt=tablefmt, colalign=colalign)
+                out_file.write(output_tables)
+            except IndentationError:
+
+                output_tables = tabulate(tables, headers=headers,
+                                         tablefmt="simple", colalign=colalign)
+                out_file.write(output_tables)
+
+    except (IsADirectoryError, FileNotFoundError) as error:
+        format_print_warning(exception=error, text="File hasn't been written")
 
 
 def main() -> None:
     """Main script to execute."""
+
     # Init argument parser, threads and tables
     parser = ArgParser()
     args = parser.parse_args()
 
     # Check if tree output only
     if args.tree:
-        FileTree(args=args).print_tree()
-        exit(0)
+        FileTree(path=args.searchdir).print_tree()
+        sys.exit(0)
 
     tables_init = ArgParserTablesInit(args=args)
-    crawler = FileCrawler(args=args)
+    crawler = FileCrawler(path=args.search_dir, abs_path=args.absolute)
     waiting_ico = Spinner()
 
     # Catching possible errors during program execution.
@@ -52,20 +72,8 @@ def main() -> None:
             print(output_tables)
 
             # Try to write result to file
-            try:
-                if args.output is not None:
-                    with open(args.output[0], 'w') as out_file:
-                        # Try to use user defined table style
-                        try:
-                            output_tables = tabulate(tables, headers=headers,
-                                                     tablefmt=args.output[1], colalign=colalign)
-                            out_file.write(output_tables)
-                        except IndentationError:
-                            output_tables = tabulate(tables, headers=headers,
-                                                     tablefmt="simple", colalign=colalign)
-                            out_file.write(output_tables)
-            except (IsADirectoryError, FileNotFoundError) as error:
-                format_print_warning(exception=error, text="File hasn't been written")
+            if args.output is not None:
+                write_to_file(args.output[0], args.output[1], tables, headers, colalign)
 
         except (IndexError, AttributeError) as error:
             format_print_error(exception=error, text="Tabulate error")

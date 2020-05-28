@@ -129,3 +129,13 @@ def format_print_warning(exception: BaseException, text: str = "Error") -> None:
     print(text)
     print(f"{FormatASCIIStyle.YELLOW}{exception}{FormatASCIIStyle.RESET}")
     print("\r--------------------------------- ")
+
+
+def format_print_message(text: str = "Message") -> None:
+    """Print a well formatted message.
+
+    :param text: **--** message text output
+    """
+    print("\r--------------------------------- ")
+    print(text)
+    print("\r--------------------------------- ")
