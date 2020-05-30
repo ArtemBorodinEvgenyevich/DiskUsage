@@ -1,7 +1,7 @@
 DiscUsage\_Console.DUCore.DUSpinner module
 ==========================================
 
-.. automodule:: DUCore.DUSpinner
+.. automodule:: DiscUsage_Console.DUCore.DUSpinner
    :members:
    :undoc-members:
    :show-inheritance:

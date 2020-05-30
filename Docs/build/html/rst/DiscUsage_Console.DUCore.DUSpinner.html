@@ -82,7 +82,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">DiskUsage application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">DiskUsage console utility</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="DiscUsage_Console.html">DiscUsage_Console package</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="DiscUsage_Console.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="DiscUsage_Console.DUCore.html">DiscUsage_Console.DUCore package</a><ul class="current">
@@ -93,7 +93,6 @@
 <li class="toctree-l3"><a class="reference internal" href="DiscUsage_Console.DUUtilities.html">DiscUsage_Console.DUUtilities package</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="DiscUsage_Console.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DiscUsage_Console.html#module-DiscUsage_Console">Module contents</a></li>
 </ul>
 </li>
@@ -165,12 +164,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-DUCore.DUSpinner">
-<span id="discusage-console-ducore-duspinner-module"></span><h1>DiscUsage_Console.DUCore.DUSpinner module<a class="headerlink" href="#module-DUCore.DUSpinner" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-DiscUsage_Console.DUCore.DUSpinner">
+<span id="discusage-console-ducore-duspinner-module"></span><h1>DiscUsage_Console.DUCore.DUSpinner module<a class="headerlink" href="#module-DiscUsage_Console.DUCore.DUSpinner" title="Permalink to this headline">¶</a></h1>
 <p>A module containing a thread class to create a new thread for waiting animation.</p>
 <dl class="py class">
-<dt id="DUCore.DUSpinner.Spinner">
-<em class="property">class </em><code class="sig-prename descclassname">DUCore.DUSpinner.</code><code class="sig-name descname">Spinner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">max_play</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">min_play</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">0.5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DUCore.DUSpinner.Spinner" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUSpinner.Spinner">
+<em class="property">class </em><code class="sig-prename descclassname">DiscUsage_Console.DUCore.DUSpinner.</code><code class="sig-name descname">Spinner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">max_play</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">min_play</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">time_step</span><span class="o">=</span><span class="default_value">0.5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscUsage_Console.DUCore.DUSpinner.Spinner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
 <p>Class for enabling a new thread with waiting indicator animation.</p>
 <div class="admonition note">
@@ -178,20 +177,20 @@
 <p>Works as a daemon.</p>
 </div>
 <dl class="py method">
-<dt id="DUCore.DUSpinner.Spinner.play_animation">
-<code class="sig-name descname">play_animation</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#DUCore.DUSpinner.Spinner.play_animation" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUSpinner.Spinner.play_animation">
+<code class="sig-name descname">play_animation</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#DiscUsage_Console.DUCore.DUSpinner.Spinner.play_animation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start playing animation until <code class="docutils literal notranslate"><span class="pre">`self._state`</span></code> changed.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="DUCore.DUSpinner.Spinner.run">
-<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#DUCore.DUSpinner.Spinner.run" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUSpinner.Spinner.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#DiscUsage_Console.DUCore.DUSpinner.Spinner.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start new thread and repeatedly flush stdout to show animation frames.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="DUCore.DUSpinner.Spinner.stop">
-<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#DUCore.DUSpinner.Spinner.stop" title="Permalink to this definition">¶</a></dt>
+<dt id="DiscUsage_Console.DUCore.DUSpinner.Spinner.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#DiscUsage_Console.DUCore.DUSpinner.Spinner.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop and join thread to main and change animation state.</p>
 </dd></dl>
 
