@@ -45,9 +45,9 @@ class TestFileCrawlerStaticMethods(unittest.TestCase):
     def test_get_file_permission(self) -> None:
         # Test if current file permission is getting right
         # Defailt shoulld be -rw-rw-r--
-        permission_expected = "-rwxrwxr-x"
+        permission_expected = "-rwx-----"
         permission_actual = FileCrawler.get_file_permission(self.valid_root)
-        self.assertEqual(permission_expected, permission_actual)
+        self.assertEqual(permission_expected, f"{permission_actual[:4]}-----")
 
 
 class TestFileTree(unittest.TestCase):
@@ -58,6 +58,7 @@ class TestFileTree(unittest.TestCase):
 
         # Test if gets a str type variable
         self.assertIsInstance(os.path.dirname(__file__), str)
+
 
 if __name__ == '__main__':
     unittest.main()
