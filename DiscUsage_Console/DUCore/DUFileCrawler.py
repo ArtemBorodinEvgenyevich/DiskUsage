@@ -7,12 +7,8 @@ from ctypes import c_ulong
 from collections import namedtuple
 
 import os
-import sys
 import stat
 import time
-
-if sys.platform == "win32":
-    from DUUtilities.DUWinSecurityInfo import get_file_security
 
 
 File = namedtuple("File", ["path", "size", "extension",
@@ -132,15 +128,8 @@ class FileCrawler:
                 file_permissions = self.get_file_permission(os.path.join(root, filename))
                 file_depth = format_extract_depth(self._root, os.path.join(root, filename))
 
-                if sys.platform == "win32":
-                    psd = get_file_security(os.path.join(root, filename))
-                    file_user_owner, file_owner_domain, owner_sid_type = psd.get_owner()
-                    if file_owner_domain:
-                        file_user_owner = f"{file_owner_domain}\\{file_user_owner} ({owner_sid_type})"
-                        file_group_owner = None
-                else:
-                    file_user_owner = stats.st_uid
-                    file_group_owner = stats.st_gid
+                file_user_owner = stats.st_uid
+                file_group_owner = stats.st_gid
 
                 file = File(path=file_path, size=file_size, extension=file_extension,
                             adate=file_a_time, mdate=file_m_time, links=file_links_num,

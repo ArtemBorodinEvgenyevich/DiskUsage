@@ -44,12 +44,8 @@ class ArgParser(argparse.ArgumentParser):
         self.add_argument("-M", "--mdate", action="store_true", help="show date of most recent content "
                                                                      "modification")
 
-        if sys.platform == "win32":
-            self.add_argument("-i", "--inode", action="store_true", help="show file ID number")
-            self.add_argument("-d", "--device", action="store_true", help="show device file ID resides on")
-        else:
-            self.add_argument("-i", "--inode", action="store_true", help="show inode number")
-            self.add_argument("-d", "--device", action="store_true", help="show device inode resides on")
+        self.add_argument("-i", "--inode", action="store_true", help="show inode number")
+        self.add_argument("-d", "--device", action="store_true", help="show device inode resides on")
 
         self.add_argument("-spu", "--sort_permission_user", type=str, help="sort by user permission by adding string "
                                                                            "after: {-p rw :r - by read, w - by write}")
@@ -97,30 +93,24 @@ class ArgParserTablesInit:
 
         if self.args.sort_permission_user is not None:
             permission = f"{file.permissions[1]}{file.permissions[2]}"
-            if permission != self.args.sort_permission_user:
+            if self.args.sort_permission_user not in permission:
                 return
 
         if self.args.sort_permission_group is not None:
             permission = f"{file.permissions[4]}{file.permissions[5]}"
-            if permission != self.args.sort_permission_user:
+            if self.args.sort_permission_group not in permission:
                 return
 
         table = {"PATH": file.path, "SIZE": format_convert_size(file.size), "EXTENSION": file.extension}
 
         if self.args.owner:
-            if sys.platform == "win32":
-                table.update({"OWNER": file.user_owner})
-            else:
-                # TODO: move to DUFileCrawler
-                # Interpret id as user/group name
-                table.update({"USER": pwd.getpwuid(file.user_owner).pw_name})
-                table.update({"GROUP": pwd.getpwuid(file.group_owner).pw_name})
+            # TODO: move to DUFileCrawler
+            # Interpret id as user/group name
+            table.update({"USER": pwd.getpwuid(file.user_owner).pw_name})
+            table.update({"GROUP": pwd.getpwuid(file.group_owner).pw_name})
 
         if self.args.inode:
-            if sys.platform == "win32":
-                table.update({"FILE ID": file.inode})
-            else:
-                table.update({"INODE": file.inode})
+            table.update({"INODE": file.inode})
 
         if self.args.device:
             table.update({"DEVICE": file.device})

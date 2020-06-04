@@ -64,6 +64,11 @@ def main() -> None:
             # Print result
             # Init data for tables
             tables = tables_init.tables
+
+            if len(tables) == 0:
+                format_print_message("Nothing has been found.")
+                exit(0)
+
             colalign = tables_init.colalign
             headers = tables_init.headers
 
